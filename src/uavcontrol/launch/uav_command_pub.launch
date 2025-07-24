@@ -1,0 +1,9 @@
+<launch>
+	<!-- run the uav_command_pub.cpp -->
+	<node pkg="uavcontrol" type="uav_command_pub" name="uav_command_pub" output="screen" launch-prefix="gnome-terminal --">	
+		<!--param name="uav_id" value="1" /-->
+		<rosparam command="load" file="$(find uavcontrol)/config/uav_command_pub.yaml" />
+		        <!-- 航点到达阈值（单位：米） -->
+        <param name="control/waypoint_threshold" type="double" value="0.5" />
+	</node>	
+</launch>

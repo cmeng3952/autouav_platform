@@ -1,0 +1,10 @@
+<launch>
+    <!-- 无人机ros－－mqtt数据转发节点 -->
+    <node pkg="uavcontrol" type="uavstate_mqtt_bridge" name="uavstate_mqtt_bridge" output="screen">
+    <param name="uav_name" value="uav1" />
+    <param name="mqtt_broker" value="tcp://47.104.183.127:1983" />
+    <param name="mqtt_user" value="pxtest" />
+    <param name="mqtt_password" value="test2025@px" />
+    
+    </node>
+</launch>

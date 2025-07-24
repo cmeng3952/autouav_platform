@@ -1,0 +1,23 @@
+<launch>
+    <!-- 启动探照灯控制节点 -->
+    <node name="led_mqtt_bridge" pkg="uavcontrol" type="led_mqtt_bridge" output="screen" respawn="true">
+        <param name="broker" value="tcp://47.104.183.127:1983" />
+        <param name="username" value="pxtest" />
+        <param name="password" value="test2025@px" />
+        <param name="pub_topic" value="uavsensor/state/uav1" />
+        <param name="sub_topic" value="uavcontrol/command/uav1" />
+        <param name="gpio_pin" value="111" />
+    </node>
+
+    <!-- 启动喊话器控制节点 -->
+    <node name="shout_mqtt_bridge" pkg="uavcontrol" type="shout_mqtt_bridge" output="screen" respawn="true">
+        <param name="broker" value="tcp://47.104.183.127:1983" />
+        <param name="username" value="pxtest" />
+        <param name="password" value="test2025@px" />
+        <param name="pub_topic" value="uavsensor/state/uav1" />
+        <param name="sub_topic" value="uavcontrol/command/uav1" />
+        <param name="stream_url" value="rtmp://47.104.183.127/audio/uav1" />
+        <param name="volume_gain" value="20dB" />
+    </node>
+</launch>
+

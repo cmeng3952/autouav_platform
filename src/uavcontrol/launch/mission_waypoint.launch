@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Simple Mission Waypoint Controller Launch -->
+    <!-- Usage: roslaunch uavcontrol mission_waypoint_simple.launch -->
+    
+    <node pkg="uavcontrol" type="mission_waypoint_node" name="mission_waypoint_controller" output="screen">
+        
+        <!-- Basic Configuration -->
+        <param name="uav_id" type="int" value="1" />
+        <param name="sim_mode" type="bool" value="true" />
+        
+        <!-- Essential Parameters Only -->
+        <param name="control/waypoint_threshold" type="double" value="0.5" />
+        <param name="control/mission_timeout" type="double" value="300.0" />
+        <param name="mission/takeoff_height" type="double" value="2.0" />
+        <param name="mission/acceptance_radius" type="double" value="1.0" />
+        
+    </node>
+    
+</launch> 
