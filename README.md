@@ -431,7 +431,7 @@ rosrun rqt_console rqt_console
 
 ## 维护者
 
-- Yuhua Qi (qiyh8@mail.sysu.edu.cn)
+- Morgance(cmeng3952@gmail.com)
 
 ## 更新日志
 
