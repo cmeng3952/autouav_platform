@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/amov/autouav_platform/build/uavcontrol_msgs/cmake_install.cmake",
+		"/home/amov/autouav_platform/build/uavcontrol_msgs/gtest/cmake_install.cmake",
+		"/home/amov/autouav_platform/build/uavcontrol_msgs/gtest/googlemock/cmake_install.cmake",
+		"/home/amov/autouav_platform/build/uavcontrol_msgs/gtest/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

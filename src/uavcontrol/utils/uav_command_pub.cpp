@@ -45,6 +45,7 @@ static std::vector<std::vector<float>> last_waypoints;
 RC_Input rc_input;
 ros::Publisher uav_setup_pub;  // 新增发布器
 bool is_command_control = false; // 添加缺失的变量定义
+ros::Publisher geo_fence_pub;  // 地理围栏发布者
 
 
 // MQTT 桥接类定义
@@ -268,6 +269,9 @@ int main(int argc, char **argv)
     //发布二维码降落
     ros::Publisher aruco_landing_pub = nh.advertise<std_msgs::Bool>("/aruco_landing", 10);
 
+    // 【发布】地理围栏指令
+    geo_fence_pub = nh.advertise<uavcontrol_msgs::GeoFence>(uav_name + "/prometheus/geo_fence", 10);
+
     //初始化数据
     int CMD = 0;
     stop_control_state.data = false;
@@ -298,6 +302,25 @@ int main(int argc, char **argv)
     //----------------------------------------------------------主循环----------------------------------------------------
     while (ros::ok())
     {
+        if (mqtt_bridge.isGeoFenceUpdated()) {
+            const auto& fence_params = mqtt_bridge.getGeoFenceParams();
+            if (fence_params.size() == 6) {
+                uavcontrol_msgs::GeoFence fence_msg;
+                fence_msg.x_min = fence_params[0];
+                fence_msg.x_max = fence_params[1];
+                fence_msg.y_min = fence_params[2];
+                fence_msg.y_max = fence_params[3];
+                fence_msg.z_min = fence_params[4];
+                fence_msg.z_max = fence_params[5];
+                
+                geo_fence_pub.publish(fence_msg);
+                ROS_INFO("Published geo-fence: x[%.1f, %.1f] y[%.1f, %.1f] z[%.1f, %.1f]",
+                        fence_msg.x_min, fence_msg.x_max,
+                        fence_msg.y_min, fence_msg.y_max,
+                        fence_msg.z_min, fence_msg.z_max);
+            }
+            mqtt_bridge.resetGeoFenceFlag();
+        }
         // 处理RC输入状态变化 (替换为修改后的代码)
         if (rc_input.enter_command_control)
         {
@@ -379,19 +402,19 @@ int main(int argc, char **argv)
             //--------------------------------------------对应所有控制模式---------------------------------------------------
             if (!is_ground_station_control)
             {
-                std::cout << "\033[32m" << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>UAV Terminal Control<<<<<<<<<<<<<<<<<<<<<<<<< " << "\033[0m" << std::endl;
-                std::cout << "\033[32m" << "Please choose the CMD:\n"
-                     << "1 Takeoff         //一键起飞\n"
-                     << "2 Land            //一键降落\n"
-                     << "3 RTL             //一键返航\n"
-                     << "4 XYZ_VEL_BODY    //速度控制\n"
-                     << "5 XYZ_POS_ENU     //位置控制\n"
-                     << "6 Hover           //悬停\n"
-                     << "7 Trajectory      //轨迹控制\n"
-                     << "8 Mission         //自主巡航\n"
-                     << "9 aruco_land      //二维码降落\n"
-                     << "\033[0m" << std::endl;
-                    std::cout.flush(); 
+                // std::cout << "\033[32m" << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>UAV Terminal Control<<<<<<<<<<<<<<<<<<<<<<<<< " << "\033[0m" << std::endl;
+                // std::cout << "\033[32m" << "Please choose the CMD:\n"
+                //      << "1 Takeoff         //一键起飞\n"
+                //      << "2 Land            //一键降落\n"
+                //      << "3 RTL             //一键返航\n"
+                //      << "4 XYZ_VEL_BODY    //速度控制\n"
+                //      << "5 XYZ_POS_ENU     //位置控制\n"
+                //      << "6 Hover           //悬停\n"
+                //      << "7 Trajectory      //轨迹控制\n"
+                //      << "8 Mission         //自主巡航\n"
+                //      << "9 aruco_land      //二维码降落\n"
+                //      << "\033[0m" << std::endl;
+                //     std::cout.flush(); 
 
                 if(input.size()){
                     CMD = input[0];
@@ -520,13 +543,18 @@ int main(int argc, char **argv)
                 }
                 ROS_INFO("[%s] 解锁成功 >> 等待电机启动...", uav_name.c_str());
                 ros::Duration(2.0).sleep(); // 等待电机初始化
-                
+
                 // 阶段3：发送起飞指令
                 Takeoff_height = mqtt_bridge.getTakeoffHeight();
+                ROS_INFO("从MQTT服务器获取的返航高度: %.2f米", Takeoff_height);
                 agent_command.header.stamp = ros::Time::now();
                 agent_command.Agent_CMD = uavcontrol_msgs::UAVCommand::Takeoff;
                 agent_command.position_ref[2] = Takeoff_height;
                 uav_command_pub.publish(agent_command);
+                ROS_INFO("已发布目标高度: CMD=%d, Takeoff_height返航高度=%.2f米, Command_ID=%d",
+                        agent_command.Agent_CMD, 
+                        agent_command.position_ref[2],
+                        agent_command.Command_ID++);
                 ROS_INFO("[%s] 起飞指令已发送 >> 目标高度: %.1f米", uav_name.c_str(), Takeoff_height);
 
                 //阶段4：进入COMMAND_CONTROL模式                
@@ -554,9 +582,15 @@ int main(int argc, char **argv)
             //-------------------------------执行一键降落模式----------------------------
             case 2:
                 land_speed = mqtt_bridge.getLandVelocity(); // 更新降落速度
+                ROS_INFO("从MQTT服务器获取的返航高度: %.2f米", land_speed);
                 agent_command.header.stamp = ros::Time::now();
                 agent_command.Agent_CMD = uavcontrol_msgs::UAVCommand::Land;
+                agent_command.land_speed = land_speed;
                 uav_command_pub.publish(agent_command);
+                ROS_INFO("已发布降落指令: CMD=%d, Land高度=%.2f米, Command_ID=%d",
+                        agent_command.Agent_CMD, 
+                        agent_command.land_speed,
+                        agent_command.Command_ID++);
                 mqtt_bridge.clearCommand(); // 关键：清除指令状态
                 break;
             
@@ -565,10 +599,15 @@ int main(int argc, char **argv)
             {
                 // 发布返航指令UAVCommand
                 rtl_height = mqtt_bridge.getRTLHeight(); // 更新返航高度
+                ROS_INFO("从MQTT服务器获取的返航高度: %.2f米", rtl_height);
                 agent_command.header.stamp = ros::Time::now();
                 agent_command.Agent_CMD = uavcontrol_msgs::UAVCommand::RTL;
                 agent_command.rtl_height = rtl_height;
                 uav_command_pub.publish(agent_command);
+                ROS_INFO("已发布返航指令: CMD=%d, RTL高度=%.2f米, Command_ID=%d",
+                        agent_command.Agent_CMD, 
+                        agent_command.rtl_height,
+                        agent_command.Command_ID++);
                 mqtt_bridge.clearCommand(); // 关键：清除指令状态
                 break;
             }

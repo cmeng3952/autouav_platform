@@ -22,6 +22,8 @@ UAV_controller::UAV_controller(ros::NodeHandle &nh) : nh(nh)
     nh.param<float>("control/Disarm_height", Disarm_height, 0.2);
     // 【参数】降落速度
     nh.param<float>("control/Land_speed", Land_speed, 0.2);
+    // 【参数】返航高度
+    nh.param<float>("control/Rtl_height", Rtl_height, 10.0);              
     // 【参数】地理围栏
     nh.param<float>("geo_fence/x_min", uav_geo_fence.x_min, -100.0);
     nh.param<float>("geo_fence/x_max", uav_geo_fence.x_max, 100.0);
@@ -38,7 +40,7 @@ UAV_controller::UAV_controller(ros::NodeHandle &nh) : nh(nh)
     px4_params = get_px4_params(nh);
 
     // 【函数】打印参数
-    printf_param();
+    // printf_param();
     cout << GREEN << node_name << " init! " << TAIL << endl;
 
     if (pos_controller == POS_CONTOLLER::PX4_ORIGIN)
@@ -68,6 +70,10 @@ UAV_controller::UAV_controller(ros::NodeHandle &nh) : nh(nh)
         pos_controller = POS_CONTOLLER::PX4_ORIGIN;
         cout << YELLOW << node_name << " wrong pos_controller param, reset to PX4_ORIGIN! " << TAIL << endl;
     }
+
+    // 【订阅】地理围栏指令
+    geo_fence_sub = nh.subscribe<uavcontrol_msgs::GeoFence>("/uav" + std::to_string(uav_id) + "/prometheus/geo_fence", 
+                                                            1, &UAV_controller::geo_fence_cb, this);
 
     // 【订阅】无人机控制指令(用于COMMAND_CONTROL模式)
     uav_cmd_sub =
@@ -168,13 +174,19 @@ UAV_controller::UAV_controller(ros::NodeHandle &nh) : nh(nh)
     this->px4_param_set_client = nh.serviceClient<mavros_msgs::ParamSet>("/uav" + std::to_string(uav_id) + "/mavros/param/set");
 
     this->ground_station_info_timer = nh.createTimer(ros::Duration(0.1), &UAV_controller::sendStationTextInfo, this);
+    // 添加参数打印定时器（每秒调用一次）
+    this->param_print_timer = nh.createTimer(ros::Duration(1.0), &UAV_controller::printf_param_timer_cb, this);
 
     if (enable_px4_params_load)
     {
         last_check_px4_location_source_time = ros::Time::now();
         this->check_px4_location_source_timer = nh.createTimer(ros::Duration(1), &UAV_controller::timercb_check_px4_location_source, this);
     }
-
+    //mavros到飞控地理围栏指令接口
+    px4_cmd_client = nh_.serviceClient<mavros_msgs::CommandLong>("/mavros/cmd/command");
+    if (!px4_cmd_client.waitForExistence(ros::Duration(5.0))) {
+        ROS_ERROR("未能连接到/mavros/cmd/command服务");
+    }
     control_state = CONTROL_STATE::INIT;
     uav_control_state.failsafe = false;
 
@@ -184,7 +196,7 @@ UAV_controller::UAV_controller(ros::NodeHandle &nh) : nh(nh)
     uav_command.position_ref[1] = 0;
     uav_command.position_ref[2] = 0.0;
     uav_command.yaw_ref = 0;
-    uav_command.rtl_height = 0.0;
+    // uav_command.rtl_height = 0.0;
 
     pos_des << 0.0, 0.0, 0.0;
     vel_des << 0.0, 0.0, 0.0;
@@ -210,8 +222,8 @@ void UAV_controller::mainloop()
     if (control_state == CONTROL_STATE::RC_POS_CONTROL || control_state == CONTROL_STATE::COMMAND_CONTROL)
     {
         // 安全检查 - 包括地理围栏、定位有效性检查
-        //int safety_flag = check_failsafe();
-	int safety_flag = 0;
+        // int safety_flag = check_failsafe();
+	    int safety_flag = 0;
         if (safety_flag == -1)
         {
             // 与PX4断开连接，直接返回
@@ -434,6 +446,108 @@ Eigen::Vector4d UAV_controller::get_cmd_from_controller()
     }
 }
 
+// 实现地理围栏回调函数
+void UAV_controller::geo_fence_cb(const uavcontrol_msgs::GeoFence::ConstPtr &msg)
+{
+    // 更新控制器内部的地理围栏参数
+    uav_geo_fence.x_min = msg->x_min;
+    uav_geo_fence.x_max = msg->x_max;
+    uav_geo_fence.y_min = msg->y_min;
+    uav_geo_fence.y_max = msg->y_max;
+    uav_geo_fence.z_min = msg->z_min;
+    uav_geo_fence.z_max = msg->z_max;
+    
+    ROS_INFO("Received new geo-fence: x[%.1f, %.1f] y[%.1f, %.1f] z[%.1f, %.1f]",
+             msg->x_min, msg->x_max, msg->y_min, msg->y_max, msg->z_min, msg->z_max);
+    
+    // 初始化参数设置服务客户端
+
+    mavros_msgs::ParamSet param_srv;
+    param_srv.request.param_id = "GF_ACTION";
+    param_srv.request.value.integer = 2;  // 2=触发后返航
+
+    if (px4_param_set_client.call(param_srv) && param_srv.response.success) {
+        ROS_INFO("设置围栏触发动作为返航成功");
+    } else {
+        ROS_ERROR("设置围栏触发动作失败");
+    }
+
+    // 围栏顶点（左下角→右下角→右上角→左上角→闭合点）
+    std::vector<std::pair<float, float>> points = {
+        {uav_geo_fence.x_min, uav_geo_fence.y_min},
+        {uav_geo_fence.x_max, uav_geo_fence.y_min},
+        {uav_geo_fence.x_max, uav_geo_fence.y_max},
+        {uav_geo_fence.x_min, uav_geo_fence.y_max},
+        {uav_geo_fence.x_min, uav_geo_fence.y_min}  // 闭合点
+    };
+
+    // 逐个发送顶点
+    for (size_t i = 0; i < points.size(); ++i) {
+        mavros_msgs::CommandLong cmd;
+        // cmd.request.target_system = 1;          // 飞控系统ID（默认1）
+        // cmd.request.target_component = 1;         // 飞控组件ID（默认1）
+        cmd.request.command = 180;      // MAV_CMD_DO_FENCE_ADD_POINT
+        cmd.request.confirmation = 0;   // 无需确认
+        cmd.request.param1 = i + 1;     // 顶点序号（从1开始）
+        cmd.request.param2 = points[i].first;  // X坐标
+        cmd.request.param3 = points[i].second; // Y坐标
+        cmd.request.param4 = uav_geo_fence.z_min;     // Z最小值
+        cmd.request.param5 = uav_geo_fence.z_max;     // Z最大值
+        cmd.request.param6 = 1.0;       // 坐标系：1=相对起飞点（推荐）
+        cmd.request.param7 = 0.0;       // 保留
+
+        if (px4_cmd_client.call(cmd) && cmd.response.success) {
+            ROS_INFO("添加顶点 %zu 成功", i + 1);
+        } else {
+            ROS_ERROR("添加顶点 %zu 失败", i + 1);
+            break;  // 某点失败则停止后续添加
+        }
+        ros::Duration(0.1).sleep();  // 间隔发送，避免飞控处理不过来
+    }
+
+    // 设置PX4飞控参数
+    // px4_param_set("GF_ACTION", (int64_t)2);  // 明确指定为int64_t类型,设置触发动作为返航
+    px4_param_set("GF_MAX_HOR_DIST", std::max(fabs(msg->x_max - msg->x_min)/2, fabs(msg->y_max - msg->y_min)/2));
+    px4_param_set("GF_MAX_VER_DIST", (msg->z_max - msg->z_min)/2);
+    
+
+    // mavros_msgs::CommandLong fence_cmd;
+    // fence_cmd.request.command = MAV_CMD_DO_FENCE_ENABLE;
+    // fence_cmd.request.param1 = 1;  // 启用地理围栏
+    // px4_cmd_client.call(fence_cmd);
+
+    // 发送围栏启用命令
+    mavros_msgs::CommandLong fence_cmd;
+    // fence_cmd.request.target_system = 1;
+    // fence_cmd.request.target_component = 1;
+    fence_cmd.request.command = 179;  // MAV_CMD_DO_FENCE_ENABLE
+    fence_cmd.request.confirmation = 0;
+    fence_cmd.request.param1 = 1.0;   // 1=启用围栏
+    fence_cmd.request.param2 = 0.0;   // 保留
+
+    if (px4_cmd_client.call(fence_cmd) && fence_cmd.response.success) {
+        ROS_INFO("地理围栏启用成功");
+    } else {
+        ROS_ERROR("地理围栏启用失败");
+    }
+
+    mavros_msgs::CommandLong clear_cmd;
+    // clear_cmd.request.target_system = 1;
+    // clear_cmd.request.target_component = 1;
+    clear_cmd.request.command = 181;  // MAV_CMD_DO_FENCE_CLEAR
+    clear_cmd.request.confirmation = 0;
+    // 所有param设为0
+
+    if (px4_cmd_client.call(clear_cmd) && clear_cmd.response.success) {
+        ROS_INFO("围栏顶点清除成功");
+    } else {
+        ROS_ERROR("围栏顶点清除失败");
+    }
+    
+    text_info.MessageType = uavcontrol_msgs::TextInfo::INFO;
+    text_info.Message = "Geo-fence updated and enabled";
+}
+
 void UAV_controller::set_hover_pose_with_odom()
 {
     // 设定悬停点
@@ -472,7 +586,7 @@ void UAV_controller::set_command_des()
     if (uav_command.Agent_CMD == uavcontrol_msgs::UAVCommand::Init_Pos_Hover)
     {
         // 【Init_Pos_Hover】 移动到指定起飞位置
-        pos_des << Takeoff_position + Eigen::Vector3d(0, 0, Takeoff_height);
+        pos_des << Takeoff_position + Eigen::Vector3d(0, 0, current_Takeoff_);
         vel_des << 0.0, 0.0, 0.0;
         acc_des << 0.0, 0.0, 0.0;
         yaw_des = uav_command.yaw_ref;
@@ -502,7 +616,7 @@ void UAV_controller::set_command_des()
         {
         // 【RTL】 返航模式
         // 假设 Takeoff_position 是起飞点的位置
-        pos_des << Eigen::Vector3d(Takeoff_position[0], Takeoff_position[1], uav_command.rtl_height);
+        pos_des << Eigen::Vector3d(Takeoff_position[0], Takeoff_position[1], current_rtl_height_);
         vel_des << 0.0, 0.0, 0.0;
         acc_des << 0.0, 0.0, 0.0;
         yaw_des = uav_command.yaw_ref;
@@ -580,6 +694,7 @@ void UAV_controller::set_command_des()
                 vel_des[0] = uav_command.velocity_ref[0];
                 vel_des[1] = uav_command.velocity_ref[1];
                 vel_des[2] = uav_command.velocity_ref[2];
+                
                 acc_des << 0.0, 0.0, 0.0;
                 yaw_rate_des = uav_command.yaw_rate_ref;
                 yaw_des = uav_command.yaw_ref + uav_yaw;
@@ -629,7 +744,7 @@ void UAV_controller::set_command_des()
             else
             {
                 uav_command.Agent_CMD = uavcontrol_msgs::UAVCommand::Init_Pos_Hover;
-                pos_des << Takeoff_position + Eigen::Vector3d(0, 0, Takeoff_height);
+                pos_des << Takeoff_position + Eigen::Vector3d(0, 0, current_Takeoff_);
                 vel_des << 0.0, 0.0, 0.0;
                 acc_des << 0.0, 0.0, 0.0;
                 yaw_des = uav_command.yaw_ref;
@@ -658,7 +773,7 @@ void UAV_controller::set_command_des_for_pos_controller()
     if (uav_command.Agent_CMD == uavcontrol_msgs::UAVCommand::Init_Pos_Hover)
     {
         // 【Init_Pos_Hover】 移动到指定起飞位置
-        pos_des << Takeoff_position + Eigen::Vector3d(0, 0, Takeoff_height);
+        pos_des << Takeoff_position + Eigen::Vector3d(0, 0, current_Takeoff_);
         vel_des << 0.0, 0.0, 0.0;
         acc_des << 0.0, 0.0, 0.0;
         yaw_des = uav_command.yaw_ref;
@@ -719,6 +834,25 @@ void UAV_controller::set_command_des_for_pos_controller()
 
 void UAV_controller::uav_cmd_cb(const uavcontrol_msgs::UAVCommand::ConstPtr &msg)
 {
+    if (msg->Agent_CMD == uavcontrol_msgs::UAVCommand::Takeoff) {
+        current_Takeoff_ = msg->position_ref[2];
+        // current_Takeoff_ = uav_command.position_ref[2];
+        ROS_INFO("收到起飞指令! 高度: %.2f米, 指令ID: %d", current_Takeoff_, msg->Command_ID);
+    } 
+
+    if (msg->Agent_CMD == uavcontrol_msgs::UAVCommand::Land) {
+        current_land_speed_ = msg->land_speed;
+        // current_land_speed_ = uav_command.land_speed;
+        ROS_INFO("收到降落指令! 速度: %.2f米/秒, 指令ID: %d", current_land_speed_, msg->Command_ID);
+    }
+
+    // 检查是否是返航指令 (RTL对应值通常为3，请确认实际枚举值)
+    if (msg->Agent_CMD == uavcontrol_msgs::UAVCommand::RTL) {
+        // 提取返航高度
+        current_rtl_height_ = msg->rtl_height;
+        ROS_INFO("收到返航指令! 高度: %.2f米, 指令ID: %d", current_rtl_height_,msg->Command_ID);
+    }
+
     if (control_state != CONTROL_STATE::COMMAND_CONTROL)
     {
         // 非COMMAND_CONTROL模式，不接收uav_command信息，并且设置初始指令为Init_Pos_Hover
@@ -752,6 +886,7 @@ void UAV_controller::uav_cmd_cb(const uavcontrol_msgs::UAVCommand::ConstPtr &msg
     }
 
     uav_command = *msg;
+    uav_command_body = uav_command;
 }
 
 void UAV_controller::send_pos_cmd_to_px4_original_controller()
@@ -793,11 +928,11 @@ void UAV_controller::send_pos_cmd_to_px4_original_controller()
                     // 设置 PX4 的 RTL_RETURN_ALT 参数
                     mavros_msgs::ParamSet param_set_srv;
                     param_set_srv.request.param_id = "RTL_RETURN_ALT";
-                    param_set_srv.request.value.real = uav_command.rtl_height;
+                    param_set_srv.request.value.real = current_rtl_height_;
 
                      // 使用类成员变量 px4_param_set_client
                     if (px4_param_set_client.call(param_set_srv) && param_set_srv.response.success) {
-                        ROS_INFO("RTL_RETURN_ALT parameter set to %f", uav_command.rtl_height);
+                        ROS_INFO("RTL_RETURN_ALT parameter set to %f", current_rtl_height_);
                     } else {
                         ROS_ERROR("Failed to set RTL_RETURN_ALT parameter");
                     }
@@ -1587,8 +1722,9 @@ void UAV_controller::printf_control_state()
             else if (uav_command.Move_mode == uavcontrol_msgs::UAVCommand::XYZ_VEL_BODY)
             {
                 cout << GREEN << "Command: [ Move in XYZ_VEL_BODY ] " << TAIL << endl;
-                cout << GREEN << "Vel_ref [X Y Z] : " << uav_command.velocity_ref[0] << " [m/s] " << uav_command.velocity_ref[1] << " [m/s] " << uav_command.velocity_ref[2] << " [m/s] " << TAIL << endl;
-                cout << GREEN << "Yaw_ref : " << uav_command.yaw_ref * 180 / M_PI << " [deg] " << TAIL << endl;
+                cout<< "\033[94m" << "Vel_body [X Y Z]:" << uav_command_body.velocity_ref[0] <<  " [m/s] " <<uav_command_body.velocity_ref[1]<<  " [m/s] " << uav_command_body.velocity_ref[2]<< " [m/s] "<<"\033[0m"<<"\n"<<endl;
+                cout << GREEN << "Vel_enu [X Y Z] : " << uav_command.velocity_ref[0] << " [m/s] " << uav_command.velocity_ref[1] << " [m/s] " << uav_command.velocity_ref[2] << " [m/s] " << TAIL <<"\n"<< endl;
+                cout << GREEN << "Yaw_enu : " << uav_command.yaw_ref * 180 / M_PI << " [deg] " << TAIL <<"\n"<< endl;
             }
             else if (uav_command.Move_mode == uavcontrol_msgs::UAVCommand::XY_VEL_Z_POS_BODY)
             {
@@ -1643,6 +1779,12 @@ void UAV_controller::printf_control_state()
     }
 }
 
+// 添加定时器回调函数
+void UAV_controller::printf_param_timer_cb(const ros::TimerEvent &e)
+{
+    printf_param(); // 直接调用现有的参数打印函数
+}
+
 void UAV_controller::printf_param()
 {
     cout << GREEN << ">>>>>>>>>>>>>>>> UAV controller Param <<<<<<<<<<<<<<<<" << TAIL << endl;
@@ -1654,7 +1796,11 @@ void UAV_controller::printf_param()
     cout << GREEN << "Takeoff_height            : " << Takeoff_height << " [m] " << TAIL << endl;
     cout << GREEN << "Disarm_height             : " << Disarm_height << " [m] " << TAIL << endl;
     cout << GREEN << "Land_speed                : " << Land_speed << " [m/s] " << TAIL << endl;
-    cout << GREEN << "geo_fence_x : " << uav_geo_fence.x_min << " [m]  to  " << uav_geo_fence.x_min << " [m]" << TAIL << endl;
+    cout << GREEN << "Rtl_height            : " << Rtl_height << " [m] " << TAIL << endl;
+    cout << GREEN << "from MQTT current_Takeoff_            : " << current_Takeoff_ << " [m] " << TAIL << endl;
+    cout << GREEN << "from MQTT current_land_speed_                : " << current_land_speed_ << " [m/s] " << TAIL << endl;
+    cout << GREEN << "from MQTT current_rtl_height_            : " << current_rtl_height_ << " [m] " << TAIL << endl;
+    cout << GREEN << "geo_fence_x : " << uav_geo_fence.x_min << " [m]  to  " << uav_geo_fence.x_max << " [m]" << TAIL << endl;
     cout << GREEN << "geo_fence_y : " << uav_geo_fence.y_min << " [m]  to  " << uav_geo_fence.y_max << " [m]" << TAIL << endl;
     cout << GREEN << "geo_fence_z : " << uav_geo_fence.z_min << " [m]  to  " << uav_geo_fence.z_max << " [m]" << TAIL << endl;
 }
@@ -1736,6 +1882,8 @@ void UAV_controller::param_set_cb(const uavcontrol_msgs::ParamSettings::ConstPtr
                 Disarm_height = std::stod(msg->param_value[i]);
             }else if(msg->param_name[i].find("control/Land_speed") != std::string::npos){
                 Land_speed = std::stod(msg->param_value[i]);
+            }else if(msg->param_name[i].find("control/Rtl_height") != std::string::npos){
+                Rtl_height = std::stod(msg->param_value[i]);
             }else if(msg->param_name[i].find("geo_fence/x_min") != std::string::npos){
                 uav_geo_fence.x_min = std::stod(msg->param_value[i]);
             }else if(msg->param_name[i].find("geo_fence/x_max") != std::string::npos){

@@ -1,0 +1,181 @@
+; Auto-generated. Do not edit!
+
+
+(cl:in-package uavcontrol_msgs-msg)
+
+
+;//! \htmlinclude LivoxCustomPoint.msg.html
+
+(cl:defclass <LivoxCustomPoint> (roslisp-msg-protocol:ros-message)
+  ((offset_time
+    :reader offset_time
+    :initarg :offset_time
+    :type cl:integer
+    :initform 0)
+   (x
+    :reader x
+    :initarg :x
+    :type cl:float
+    :initform 0.0)
+   (y
+    :reader y
+    :initarg :y
+    :type cl:float
+    :initform 0.0)
+   (z
+    :reader z
+    :initarg :z
+    :type cl:float
+    :initform 0.0)
+   (reflectivity
+    :reader reflectivity
+    :initarg :reflectivity
+    :type cl:fixnum
+    :initform 0)
+   (tag
+    :reader tag
+    :initarg :tag
+    :type cl:fixnum
+    :initform 0)
+   (line
+    :reader line
+    :initarg :line
+    :type cl:fixnum
+    :initform 0))
+)
+
+(cl:defclass LivoxCustomPoint (<LivoxCustomPoint>)
+  ())
+
+(cl:defmethod cl:initialize-instance :after ((m <LivoxCustomPoint>) cl:&rest args)
+  (cl:declare (cl:ignorable args))
+  (cl:unless (cl:typep m 'LivoxCustomPoint)
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name uavcontrol_msgs-msg:<LivoxCustomPoint> is deprecated: use uavcontrol_msgs-msg:LivoxCustomPoint instead.")))
+
+(cl:ensure-generic-function 'offset_time-val :lambda-list '(m))
+(cl:defmethod offset_time-val ((m <LivoxCustomPoint>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader uavcontrol_msgs-msg:offset_time-val is deprecated.  Use uavcontrol_msgs-msg:offset_time instead.")
+  (offset_time m))
+
+(cl:ensure-generic-function 'x-val :lambda-list '(m))
+(cl:defmethod x-val ((m <LivoxCustomPoint>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader uavcontrol_msgs-msg:x-val is deprecated.  Use uavcontrol_msgs-msg:x instead.")
+  (x m))
+
+(cl:ensure-generic-function 'y-val :lambda-list '(m))
+(cl:defmethod y-val ((m <LivoxCustomPoint>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader uavcontrol_msgs-msg:y-val is deprecated.  Use uavcontrol_msgs-msg:y instead.")
+  (y m))
+
+(cl:ensure-generic-function 'z-val :lambda-list '(m))
+(cl:defmethod z-val ((m <LivoxCustomPoint>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader uavcontrol_msgs-msg:z-val is deprecated.  Use uavcontrol_msgs-msg:z instead.")
+  (z m))
+
+(cl:ensure-generic-function 'reflectivity-val :lambda-list '(m))
+(cl:defmethod reflectivity-val ((m <LivoxCustomPoint>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader uavcontrol_msgs-msg:reflectivity-val is deprecated.  Use uavcontrol_msgs-msg:reflectivity instead.")
+  (reflectivity m))
+
+(cl:ensure-generic-function 'tag-val :lambda-list '(m))
+(cl:defmethod tag-val ((m <LivoxCustomPoint>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader uavcontrol_msgs-msg:tag-val is deprecated.  Use uavcontrol_msgs-msg:tag instead.")
+  (tag m))
+
+(cl:ensure-generic-function 'line-val :lambda-list '(m))
+(cl:defmethod line-val ((m <LivoxCustomPoint>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader uavcontrol_msgs-msg:line-val is deprecated.  Use uavcontrol_msgs-msg:line instead.")
+  (line m))
+(cl:defmethod roslisp-msg-protocol:serialize ((msg <LivoxCustomPoint>) ostream)
+  "Serializes a message object of type '<LivoxCustomPoint>"
+  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'offset_time)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'offset_time)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 16) (cl:slot-value msg 'offset_time)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 24) (cl:slot-value msg 'offset_time)) ostream)
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'x))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'y))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'z))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'reflectivity)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'tag)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'line)) ostream)
+)
+(cl:defmethod roslisp-msg-protocol:deserialize ((msg <LivoxCustomPoint>) istream)
+  "Deserializes a message object of type '<LivoxCustomPoint>"
+    (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'offset_time)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'offset_time)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 16) (cl:slot-value msg 'offset_time)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 24) (cl:slot-value msg 'offset_time)) (cl:read-byte istream))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'x) (roslisp-utils:decode-single-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'y) (roslisp-utils:decode-single-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'z) (roslisp-utils:decode-single-float-bits bits)))
+    (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'reflectivity)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'tag)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'line)) (cl:read-byte istream))
+  msg
+)
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<LivoxCustomPoint>)))
+  "Returns string type for a message object of type '<LivoxCustomPoint>"
+  "uavcontrol_msgs/LivoxCustomPoint")
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'LivoxCustomPoint)))
+  "Returns string type for a message object of type 'LivoxCustomPoint"
+  "uavcontrol_msgs/LivoxCustomPoint")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<LivoxCustomPoint>)))
+  "Returns md5sum for a message object of type '<LivoxCustomPoint>"
+  "109a3cc548bb1f96626be89a5008bd6d")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'LivoxCustomPoint)))
+  "Returns md5sum for a message object of type 'LivoxCustomPoint"
+  "109a3cc548bb1f96626be89a5008bd6d")
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<LivoxCustomPoint>)))
+  "Returns full string definition for message of type '<LivoxCustomPoint>"
+  (cl:format cl:nil "# Livox costom pointcloud format.~%~%uint32 offset_time      # offset time relative to the base time~%float32 x               # X axis, unit:m~%float32 y               # Y axis, unit:m~%float32 z               # Z axis, unit:m~%uint8 reflectivity      # reflectivity, 0~~255~%uint8 tag               # livox tag~%uint8 line              # laser number in lidar~%~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'LivoxCustomPoint)))
+  "Returns full string definition for message of type 'LivoxCustomPoint"
+  (cl:format cl:nil "# Livox costom pointcloud format.~%~%uint32 offset_time      # offset time relative to the base time~%float32 x               # X axis, unit:m~%float32 y               # Y axis, unit:m~%float32 z               # Z axis, unit:m~%uint8 reflectivity      # reflectivity, 0~~255~%uint8 tag               # livox tag~%uint8 line              # laser number in lidar~%~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:serialization-length ((msg <LivoxCustomPoint>))
+  (cl:+ 0
+     4
+     4
+     4
+     4
+     1
+     1
+     1
+))
+(cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <LivoxCustomPoint>))
+  "Converts a ROS message object to a list"
+  (cl:list 'LivoxCustomPoint
+    (cl:cons ':offset_time (offset_time msg))
+    (cl:cons ':x (x msg))
+    (cl:cons ':y (y msg))
+    (cl:cons ':z (z msg))
+    (cl:cons ':reflectivity (reflectivity msg))
+    (cl:cons ':tag (tag msg))
+    (cl:cons ':line (line msg))
+))

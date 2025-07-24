@@ -37,6 +37,7 @@ float32[3] velocity_ref                ## [m/s]
 float32[3] acceleration_ref            ## [m/s^2]
 float32 yaw_ref                        ## [rad]
 float32 rtl_height                     ## [m]返航高度
+float32 land_speed
 bool Yaw_Rate_Mode                     ## True 代表控制偏航角速率
 float32 yaw_rate_ref                   ## [rad/s]
 float32[4] att_ref                     ## [rad] + [0-1]

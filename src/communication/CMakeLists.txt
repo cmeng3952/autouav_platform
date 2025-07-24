@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(communication_bridge)
 
 ## Compile as C++14, supported in ROS Kinetic and newer

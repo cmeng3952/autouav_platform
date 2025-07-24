@@ -83,7 +83,6 @@ target_link_libraries(led_mqtt_bridge
     ${catkin_LIBRARIES} 
     ${PAHO_MQTT_CPP_LIBRARIES}
     ${PAHO_MQTT_C_LIBRARIES}
-    wiringPi
     modbus  # 添加这一行
 )
 

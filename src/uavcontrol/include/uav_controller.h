@@ -27,6 +27,7 @@
 #include <uavcontrol_msgs/TextInfo.h>
 #include <uavcontrol_msgs/OffsetPose.h>
 #include <uavcontrol_msgs/ParamSettings.h>
+#include <uavcontrol_msgs/GeoFence.h>
 
 #include <nav_msgs/Odometry.h>
 
@@ -58,6 +59,7 @@ public:
     ros::Subscriber px4_attitude_target_sub;
     ros::Subscriber px4_rc_sub;
     ros::Subscriber offset_pose_sub;
+    ros::Subscriber geo_fence_sub;// 地理围栏订阅
     // 地面站参数修改话题
     ros::Subscriber ros_param_set_sub;
     // 发布话题
@@ -77,7 +79,7 @@ public:
     ros::ServiceClient px4_param_get_client;
     ros::ServiceClient px4_param_set_client;
 
-    uavcontrol_msgs::UAVCommand uav_command;      // 指令
+    uavcontrol_msgs::UAVCommand uav_command,uav_command_body;      // 指令
     uavcontrol_msgs::UAVCommand uav_command_last; // 上一时刻指令
     uavcontrol_msgs::UAVState uav_state;      // 无人机状态
     uavcontrol_msgs::UAVState uav_state_last; // 无人机状态
@@ -137,11 +139,13 @@ public:
     float Takeoff_height; // 默认起飞高度
     float Disarm_height;  // 自动上锁高度
     float Land_speed;     // 降落速度
+    float Rtl_height;     // 返航高度
     bool set_landing_des;
 
     // PX4参数 用于存储需要修改的PX4参数
     std::unordered_map<std::string, std::string> px4_params;
     ros::NodeHandle nh;
+    ros::NodeHandle nh_;  // 用于访问ROS节点句柄
 
     // 无人机状态量
     Eigen::Vector3d uav_pos;     // 无人机位置
@@ -192,10 +196,17 @@ public:
     Eigen::Vector3d px4_rates_target;
     // PX4中的推力设定值（用于验证控制指令是否正确发送）
     float px4_thrust_target;
+    double current_rtl_height_;  // 当前接收到的返航高度
+    double current_land_speed_;
+    double current_Takeoff_;
+
 
     void printf_control_state();
 
 private:
+    UAV_controller() : current_rtl_height_(0.0), current_land_speed_(0.0), current_Takeoff_(0.0) {}
+    void geo_fence_cb(const uavcontrol_msgs::GeoFence::ConstPtr &msg);
+    void printf_param_timer_cb(const ros::TimerEvent &e);
     void uav_cmd_cb(const uavcontrol_msgs::UAVCommand::ConstPtr &msg);
     void uav_state_cb(const uavcontrol_msgs::UAVState::ConstPtr &msg);
     void uav_setup_cb(const uavcontrol_msgs::UAVSetup::ConstPtr &msg);

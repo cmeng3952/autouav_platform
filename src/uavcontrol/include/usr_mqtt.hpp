@@ -54,13 +54,14 @@ private:
             // 降落相关
             int land = 0;
             float mqtt_land_vel = 0.5f;  // mqtt降落速度
-
-
-            
             
             // 返航相关
             int RTL = 0;
             float mqtt_rtl_height = 5.0f;  // mqtt返航高度
+
+            // 新增：地理围栏参数（数组形式，顺序：x_min, x_max, y_min, y_max, z_min, z_max）
+            int geo_fence = 0;             // 地理围栏指令标志
+            std::vector<float> fence_params = {-50.0f, 50.0f, -50.0f, 50.0f, -50.0f, 50.0f}; // 默认值，从MQTT获取数据后更新
            
             std::vector<float> Velocity = {0.0f, 0.0f, 0.0f, 0.0f};
             std::vector<std::vector<float>> Position; // 改为二维数组
@@ -120,6 +121,11 @@ public:
     std::vector<float> wp_new;
     float via_var = 0;
 
+    // 添加地理围栏更新标志和获取函数
+    bool geo_fence_updated = false;
+    bool isGeoFenceUpdated() const { return geo_fence_updated; }
+    void resetGeoFenceFlag() { geo_fence_updated = false; }
+
     // 添加获取轨迹参数的接口
     TrajectoryParams& getTrajParams() { 
         return traj_params_; 
@@ -129,6 +135,8 @@ public:
     float getLandVelocity() const { return drone_cmd.mqtt_land_vel; }
     float getRTLHeight() const { return drone_cmd.mqtt_rtl_height; }
 
+    // 新增：地理围栏数组访问接口
+    const std::vector<float>& getGeoFenceParams() const { return drone_cmd.fence_params; }
 
     MQTTBridge(const std::string& broker,
                const std::string& username,
@@ -310,7 +318,7 @@ public:
                     if (cmd_data.contains("Takeoff")) {
                         const auto& takeoff_cmd = cmd_data["Takeoff"];
                         drone_cmd.take_off = 1;  // 标志位设为1
-                        drone_cmd.mqtt_takeoff_height = takeoff_cmd.value("takeoff_height", 3.0f); // 默认3米
+                        drone_cmd.mqtt_takeoff_height = takeoff_cmd.value("takeoff_height", 3.0f); // 默认3米,如果没有从MQTT获取到数据就使用这里的默认值，下面同理
                         usr_cmd = 1;
                     }
 
@@ -326,7 +334,9 @@ public:
                     if (cmd_data.contains("RTL")) {
                         const auto& rtl_cmd = cmd_data["RTL"];
                         drone_cmd.RTL = 1;
-                        drone_cmd.mqtt_rtl_height = rtl_cmd.value("rtl height", 20.0f); // 默认20米
+                        // drone_cmd.mqtt_rtl_height = rtl_cmd.value("rtl height", 6.0f); // 默认10米
+                        drone_cmd.mqtt_rtl_height = rtl_cmd["rtl_height"].get<float>();
+                        // ROS_INFO("从MQTT服务器获取的返航高度: %.2f米", drone_cmd.mqtt_rtl_height);
                         usr_cmd = 3;
                     }
 
@@ -572,9 +582,37 @@ public:
                             usr_cmd = 0; // 拒绝不完整指令
                         }
                     }
+                    // 地理围栏指令解析
+                    if (cmd_data.contains("GeoFence")) {
+                        const auto& fence_cmd = cmd_data["GeoFence"];
+                        drone_cmd.geo_fence = 1;  // 标志位设为1
 
+                        try {
+                            // 按顺序解析参数并存入数组：[x_min, x_max, y_min, y_max, z_min, z_max]
+                            drone_cmd.fence_params[0] = fence_cmd["x_min"].get<float>();  // x_min
+                            drone_cmd.fence_params[1] = fence_cmd["x_max"].get<float>();  // x_max
+                            drone_cmd.fence_params[2] = fence_cmd["y_min"].get<float>();  // y_min
+                            drone_cmd.fence_params[3] = fence_cmd["y_max"].get<float>();  // y_max
+                            drone_cmd.fence_params[4] = fence_cmd["z_min"].get<float>();  // z_min
+                            drone_cmd.fence_params[5] = fence_cmd["z_max"].get<float>();  // z_max
 
-
+                            // 设置指令码（使用9，与现有不冲突）
+                            // usr_cmd = 9;
+                            // 设置更新标志
+                            geo_fence_updated = true;
+                            ROS_INFO("Received new geo-fence parameters");
+                            // 打印数组形式的围栏参数
+                            ROS_INFO("收到地理围栏指令（数组）:");
+                            ROS_INFO("x: [%.1f, %.1f], y: [%.1f, %.1f], z: [%.1f, %.1f]",
+                                    drone_cmd.fence_params[0], drone_cmd.fence_params[1],
+                                    drone_cmd.fence_params[2], drone_cmd.fence_params[3],
+                                    drone_cmd.fence_params[4], drone_cmd.fence_params[5]);
+                        } catch (const json::exception& e) {
+                            ROS_ERROR("地理围栏参数解析错误: %s", e.what());
+                            drone_cmd.geo_fence = 0;  // 重置标志
+                            // usr_cmd = 0;              // 清除错误指令
+                        }
+                    }
 
                 }
             }
