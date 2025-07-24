@@ -1,0 +1,25 @@
+<launch>
+    <!-- 清除参数服务器的数据 -->
+    <exec cmd="rosparam delete -v /" output="screen" />
+
+    <arg name="uav_id" default="1"/>
+    <arg name="sim_mode" default="false"/>
+    <arg name="flag_printf" default="true"/>
+    <arg name="launch_prefix" default="" />
+
+    <!-- 启动独立的uav_estimator节点 -->
+    <node pkg="uavcontrol" type="uav_estimator_node" name="uav_estimator_main_$(arg uav_id)" output="screen" launch-prefix="$(arg launch_prefix)">
+        <param name="uav_id" value="$(arg uav_id)" />
+        <param name="sim_mode" value="$(arg sim_mode)" />
+        <param name="flag_printf" value="$(arg flag_printf)" />
+        <!-- 加载估算器相关配置 -->
+        <rosparam command="load" file="$(find uavcontrol)/config/sensor_tf_offset.yaml" />
+        
+        <!-- 估算器特定参数 -->
+        <param name="control/location_source" value="4" />  <!-- GPS -->
+        <param name="control/maximum_safe_vel_xy" value="4.0" />
+        <param name="control/maximum_safe_vel_z" value="3.0" />
+        <param name="control/maximum_vel_error_for_vision" value="1.0" />
+    </node>
+
+</launch> 

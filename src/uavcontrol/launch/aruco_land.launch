@@ -1,0 +1,12 @@
+<launch>
+    <!-- 節點名稱 -->
+    <node pkg="uavcontrol" type="aruco_land" name="aruco_land_node" output="screen">
+      <param name="p_gain_x" type="double" value="1.25"/>
+      <param name="i_gain_x" type="double" value="0.05"/>
+      <param name="d_gain_x" type="double" value="0.8"/>
+      <param name="p_gain_y" type="double" value="1.25"/>
+      <param name="i_gain_y" type="double" value="0.05"/>
+      <param name="d_gain_y" type="double" value="0.8"/> 
+      <param name="p_gain_z" type="double" value="1.0"/>
+    </node>
+</launch>

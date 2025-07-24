@@ -1,0 +1,19 @@
+<launch>
+    <!-- 清除参数服务器的数据 -->
+    <exec cmd="rosparam delete -v /" output="screen" />
+
+    <arg name="uav_id" default="1"/>
+    <arg name="sim_mode" default="false"/>
+    <arg name="flag_printf" default="true"/>
+    <!-- 如果是matlab配置为ATT_CTRL_MODE，则此处要设置为True-->
+    <arg name="control/enable_external_control" default="false"/> 
+    <arg name="launch_prefix" default="" />
+
+    <!-- 启动虚拟摇杆驱动 -->
+    <arg name="joy_enable" default="true"/>
+    <group if="$(arg joy_enable)">
+        <node pkg="uavcontrol" type="joy_node" name="joy_node" output="screen">
+            <param name="agent_num" value="$(arg uav_id)"/>
+        </node>
+    </group>
+</launch>

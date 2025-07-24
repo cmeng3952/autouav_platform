@@ -1,0 +1,14 @@
+<launch>
+  <!-- UAV ID parameter - 默认为1，可以通过命令行参数覆盖 -->
+  <arg name="uav_id" default="1" />
+  
+  <!-- 任务规划器节点 -->
+  <node pkg="uavcontrol" type="mission_planner" name="mission_planner" output="screen">
+    <param name="uav_id" value="$(arg uav_id)" />
+  </node>
+  
+  <!-- 任务航点控制器节点 -->
+  <node pkg="uavcontrol" type="mission_waypoint_node" name="mission_controller" output="screen">
+    <param name="uav_id" value="$(arg uav_id)" />
+  </node>
+</launch> 
