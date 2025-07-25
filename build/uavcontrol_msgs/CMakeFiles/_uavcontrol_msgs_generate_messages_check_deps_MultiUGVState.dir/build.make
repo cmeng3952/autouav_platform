@@ -67,7 +67,7 @@ include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiUGVState.d
 include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiUGVState.dir/progress.make
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiUGVState:
-	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg geometry_msgs/Quaternion:uavcontrol_msgs/UGVState:std_msgs/Header
+	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg uavcontrol_msgs/UGVState:geometry_msgs/Quaternion:std_msgs/Header
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiUGVState.dir/codegen:
 .PHONY : CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiUGVState.dir/codegen

@@ -75,6 +75,7 @@ public:
     ros::ServiceClient px4_set_mode_client;
     ros::ServiceClient px4_reboot_client;
     ros::ServiceClient px4_emergency_client;
+    ros::ServiceClient px4_cmd_client;  // MAVROS命令服务客户端
     // 飞控参数获取/修改服务
     ros::ServiceClient px4_param_get_client;
     ros::ServiceClient px4_param_set_client;
@@ -180,6 +181,7 @@ public:
 
     ros::Timer check_px4_location_source_timer;
     ros::Timer ground_station_info_timer;
+    ros::Timer param_print_timer;
 
     pos_controller_PID pos_controller_pid;
     pos_controller_UDE pos_controller_ude;
@@ -200,13 +202,12 @@ public:
     double current_land_speed_;
     double current_Takeoff_;
 
-
     void printf_control_state();
+
 
 private:
     UAV_controller() : current_rtl_height_(0.0), current_land_speed_(0.0), current_Takeoff_(0.0) {}
     void geo_fence_cb(const uavcontrol_msgs::GeoFence::ConstPtr &msg);
-    void printf_param_timer_cb(const ros::TimerEvent &e);
     void uav_cmd_cb(const uavcontrol_msgs::UAVCommand::ConstPtr &msg);
     void uav_state_cb(const uavcontrol_msgs::UAVState::ConstPtr &msg);
     void uav_setup_cb(const uavcontrol_msgs::UAVSetup::ConstPtr &msg);
@@ -216,6 +217,8 @@ private:
     void offset_pose_cb(const uavcontrol_msgs::OffsetPose::ConstPtr &msg);
     void param_set_cb(const uavcontrol_msgs::ParamSettings::ConstPtr &msg);
     void sendStationTextInfo(const ros::TimerEvent &e);
+    void printf_param_timer_cb(const ros::TimerEvent &e);
+
 
     void set_command_des();
     void set_command_des_for_pos_controller();

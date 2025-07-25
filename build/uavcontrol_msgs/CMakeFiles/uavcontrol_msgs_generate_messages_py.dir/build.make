@@ -155,8 +155,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_BoundingBoxes.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_BoundingBoxes.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_BoundingBoxes.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_BoundingBoxes.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_BoundingBoxes.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG uavcontrol_msgs/BoundingBoxes"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
@@ -170,34 +170,34 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /opt/ros/noetic/share/sensor_msgs/msg/Image.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python from MSG uavcontrol_msgs/CheckForObjectsAction"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionFeedback.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionFeedback.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionFeedback.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionFeedback.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionFeedback.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Python from MSG uavcontrol_msgs/CheckForObjectsActionFeedback"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionGoal.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionGoal.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionGoal.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/Image.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionGoal.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Python from MSG uavcontrol_msgs/CheckForObjectsActionGoal"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
@@ -205,10 +205,10 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsActionResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Python from MSG uavcontrol_msgs/CheckForObjectsActionResult"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
@@ -227,8 +227,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsResult.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsResult.py: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsResult.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsResult.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_CheckForObjectsResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Python from MSG uavcontrol_msgs/CheckForObjectsResult"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
@@ -349,45 +349,45 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfo.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfo.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfo.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfo.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfo.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Generating Python from MSG uavcontrol_msgs/MultiDetectionInfo"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfoSub.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfoSub.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfoSub.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfoSub.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiDetectionInfoSub.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Generating Python from MSG uavcontrol_msgs/MultiDetectionInfoSub"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUAVState.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUAVState.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUAVState.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUAVState.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUAVState.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUAVState.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Generating Python from MSG uavcontrol_msgs/MultiUAVState"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUGVState.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUGVState.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUGVState.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUGVState.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUGVState.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_MultiUGVState.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Generating Python from MSG uavcontrol_msgs/MultiUGVState"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/TwistWithCovariance.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/nav_msgs/msg/Odometry.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/PoseWithCovariance.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/nav_msgs/msg/Odometry.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/TwistWithCovariance.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_Odometry.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Generating Python from MSG uavcontrol_msgs/Odometry"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 
@@ -398,8 +398,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_OutputData.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_OutputData.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_OutputData.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_OutputData.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_OutputData.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_OutputData.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Generating Python from MSG uavcontrol_msgs/OutputData"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
@@ -423,8 +423,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_PositionCommand.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_PositionCommand.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_PositionCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_PositionCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_PositionCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_PositionCommand.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Generating Python from MSG uavcontrol_msgs/PositionCommand"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
@@ -443,9 +443,9 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_SO3Command.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_SO3Command.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_SO3Command.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_SO3Command.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_SO3Command.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_SO3Command.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_SO3Command.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Generating Python from MSG uavcontrol_msgs/SO3Command"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
@@ -463,11 +463,11 @@ CMakeFiles/uavcontrol_msgs_generate_messages_py: /home/amov/autouav_platform/dev
 
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
 /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg/_StationCommand.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Generating Python from MSG uavcontrol_msgs/StationCommand"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/lib/python3/dist-packages/uavcontrol_msgs/msg
 

@@ -1476,4 +1476,5 @@ CMakeFiles/uav_command_pub.dir/utils/uav_command_pub.cpp.o: \
  /home/amov/autouav_platform/src/uavcontrol/include/rc_input.h \
  /opt/ros/noetic/include/std_msgs/Float32MultiArray.h \
  /opt/ros/noetic/include/std_msgs/MultiArrayLayout.h \
- /opt/ros/noetic/include/std_msgs/MultiArrayDimension.h
+ /opt/ros/noetic/include/std_msgs/MultiArrayDimension.h \
+ /home/amov/autouav_platform/devel/include/uavcontrol_msgs/GeoFence.h

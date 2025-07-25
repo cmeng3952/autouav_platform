@@ -68,17 +68,17 @@ class GeoFence {
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type GeoFence
     // Serialize message field [x_min]
-    bufferOffset = _serializer.float32(obj.x_min, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.x_min, buffer, bufferOffset);
     // Serialize message field [x_max]
-    bufferOffset = _serializer.float32(obj.x_max, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.x_max, buffer, bufferOffset);
     // Serialize message field [y_min]
-    bufferOffset = _serializer.float32(obj.y_min, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.y_min, buffer, bufferOffset);
     // Serialize message field [y_max]
-    bufferOffset = _serializer.float32(obj.y_max, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.y_max, buffer, bufferOffset);
     // Serialize message field [z_min]
-    bufferOffset = _serializer.float32(obj.z_min, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.z_min, buffer, bufferOffset);
     // Serialize message field [z_max]
-    bufferOffset = _serializer.float32(obj.z_max, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.z_max, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -87,22 +87,22 @@ class GeoFence {
     let len;
     let data = new GeoFence(null);
     // Deserialize message field [x_min]
-    data.x_min = _deserializer.float32(buffer, bufferOffset);
+    data.x_min = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [x_max]
-    data.x_max = _deserializer.float32(buffer, bufferOffset);
+    data.x_max = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [y_min]
-    data.y_min = _deserializer.float32(buffer, bufferOffset);
+    data.y_min = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [y_max]
-    data.y_max = _deserializer.float32(buffer, bufferOffset);
+    data.y_max = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [z_min]
-    data.z_min = _deserializer.float32(buffer, bufferOffset);
+    data.z_min = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [z_max]
-    data.z_max = _deserializer.float32(buffer, bufferOffset);
+    data.z_max = _deserializer.float64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 24;
+    return 48;
   }
 
   static datatype() {
@@ -112,18 +112,19 @@ class GeoFence {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'd44785c3961c1071248f125a86fee65b';
+    return 'ad99bb284c3254d76796e1b66efe44bd';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    float32 x_min
-    float32 x_max
-    float32 y_min
-    float32 y_max
-    float32 z_min
-    float32 z_max
+    float64 x_min
+    float64 x_max
+    float64 y_min
+    float64 y_max
+    float64 z_min
+    float64 z_max
+    
     
     `;
   }

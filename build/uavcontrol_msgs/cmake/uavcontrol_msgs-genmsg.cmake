@@ -24,7 +24,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg" "geometry_msgs/Quaternion:uavcontrol_msgs/UAVState:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg" "uavcontrol_msgs/UAVState:geometry_msgs/Quaternion:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVCommand.msg" NAME_WE)
@@ -64,7 +64,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg" "geometry_msgs/Quaternion:uavcontrol_msgs/UGVState:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg" "uavcontrol_msgs/UGVState:geometry_msgs/Quaternion:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionReference.msg" NAME_WE)
@@ -74,7 +74,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg" "geometry_msgs/Point:std_msgs/Header:geometry_msgs/PoseStamped:geometry_msgs/Pose:geometry_msgs/Quaternion"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg" "geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/PoseStamped:geometry_msgs/Pose:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/ArucoInfo.msg" NAME_WE)
@@ -94,7 +94,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg" "std_msgs/Header:uavcontrol_msgs/DetectionInfo"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg" "uavcontrol_msgs/DetectionInfo:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg" NAME_WE)
@@ -104,7 +104,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg" "std_msgs/Header:uavcontrol_msgs/BoundingBox"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg" "uavcontrol_msgs/BoundingBox:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SwarmCommand.msg" NAME_WE)
@@ -144,12 +144,12 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg" "geometry_msgs/Vector3:geometry_msgs/Quaternion:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg" "geometry_msgs/Quaternion:geometry_msgs/Vector3:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg" "geometry_msgs/Vector3:geometry_msgs/Point:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg" "geometry_msgs/Point:geometry_msgs/Vector3:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PPROutputData.msg" NAME_WE)
@@ -164,7 +164,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg" "geometry_msgs/Vector3:geometry_msgs/Quaternion:uavcontrol_msgs/AuxCommand:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg" "geometry_msgs/Quaternion:uavcontrol_msgs/AuxCommand:geometry_msgs/Vector3:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StatusData.msg" NAME_WE)
@@ -179,7 +179,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg" "geometry_msgs/Twist:geometry_msgs/Point:std_msgs/Header:geometry_msgs/Vector3:geometry_msgs/TwistWithCovariance:geometry_msgs/Pose:nav_msgs/Odometry:geometry_msgs/Quaternion:geometry_msgs/PoseWithCovariance"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg" "geometry_msgs/Quaternion:geometry_msgs/PoseWithCovariance:geometry_msgs/Point:nav_msgs/Odometry:geometry_msgs/Twist:geometry_msgs/Pose:geometry_msgs/TwistWithCovariance:geometry_msgs/Vector3:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PolynomialTrajectory.msg" NAME_WE)
@@ -224,7 +224,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg" "std_msgs/Header:uavcontrol_msgs/DetectionInfoSub"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg" "uavcontrol_msgs/DetectionInfoSub:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/VisionDiff.msg" NAME_WE)
@@ -294,22 +294,22 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg" "uavcontrol_msgs/BoundingBox:uavcontrol_msgs/CheckForObjectsResult:std_msgs/Header:uavcontrol_msgs/CheckForObjectsActionGoal:uavcontrol_msgs/CheckForObjectsGoal:uavcontrol_msgs/BoundingBoxes:uavcontrol_msgs/CheckForObjectsActionFeedback:sensor_msgs/Image:uavcontrol_msgs/CheckForObjectsFeedback:uavcontrol_msgs/CheckForObjectsActionResult:actionlib_msgs/GoalStatus:actionlib_msgs/GoalID"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg" "uavcontrol_msgs/BoundingBox:uavcontrol_msgs/CheckForObjectsResult:uavcontrol_msgs/CheckForObjectsGoal:sensor_msgs/Image:uavcontrol_msgs/CheckForObjectsActionGoal:actionlib_msgs/GoalID:uavcontrol_msgs/CheckForObjectsActionFeedback:uavcontrol_msgs/CheckForObjectsFeedback:actionlib_msgs/GoalStatus:uavcontrol_msgs/CheckForObjectsActionResult:uavcontrol_msgs/BoundingBoxes:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg" "actionlib_msgs/GoalID:sensor_msgs/Image:std_msgs/Header:uavcontrol_msgs/CheckForObjectsGoal"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg" "actionlib_msgs/GoalID:uavcontrol_msgs/CheckForObjectsGoal:sensor_msgs/Image:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg" "uavcontrol_msgs/BoundingBox:uavcontrol_msgs/CheckForObjectsResult:std_msgs/Header:uavcontrol_msgs/BoundingBoxes:actionlib_msgs/GoalStatus:actionlib_msgs/GoalID"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg" "uavcontrol_msgs/BoundingBox:uavcontrol_msgs/CheckForObjectsResult:actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:uavcontrol_msgs/BoundingBoxes:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg" "actionlib_msgs/GoalStatus:actionlib_msgs/GoalID:std_msgs/Header:uavcontrol_msgs/CheckForObjectsFeedback"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg" "actionlib_msgs/GoalStatus:uavcontrol_msgs/CheckForObjectsFeedback:actionlib_msgs/GoalID:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg" NAME_WE)
@@ -319,7 +319,7 @@ add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg" NAME_WE)
 add_custom_target(_uavcontrol_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg" "uavcontrol_msgs/BoundingBox:std_msgs/Header:uavcontrol_msgs/BoundingBoxes"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "uavcontrol_msgs" "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg" "uavcontrol_msgs/BoundingBox:uavcontrol_msgs/BoundingBoxes:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg" NAME_WE)
@@ -347,7 +347,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -395,7 +395,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -407,7 +407,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -431,7 +431,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -443,7 +443,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -491,13 +491,13 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -515,7 +515,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -533,7 +533,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -587,7 +587,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -671,25 +671,25 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -701,7 +701,7 @@ _generate_msg_cpp(uavcontrol_msgs
 _generate_msg_cpp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_cpp(uavcontrol_msgs
@@ -876,7 +876,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -924,7 +924,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -936,7 +936,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -960,7 +960,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -972,7 +972,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -1020,13 +1020,13 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -1044,7 +1044,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -1062,7 +1062,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -1116,7 +1116,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -1200,25 +1200,25 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -1230,7 +1230,7 @@ _generate_msg_eus(uavcontrol_msgs
 _generate_msg_eus(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_eus(uavcontrol_msgs
@@ -1405,7 +1405,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1453,7 +1453,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1465,7 +1465,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1489,7 +1489,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1501,7 +1501,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1549,13 +1549,13 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1573,7 +1573,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1591,7 +1591,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1645,7 +1645,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1729,25 +1729,25 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1759,7 +1759,7 @@ _generate_msg_lisp(uavcontrol_msgs
 _generate_msg_lisp(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_lisp(uavcontrol_msgs
@@ -1934,7 +1934,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -1982,7 +1982,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -1994,7 +1994,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2018,7 +2018,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2030,7 +2030,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2078,13 +2078,13 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2102,7 +2102,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2120,7 +2120,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2174,7 +2174,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2258,25 +2258,25 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2288,7 +2288,7 @@ _generate_msg_nodejs(uavcontrol_msgs
 _generate_msg_nodejs(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_nodejs(uavcontrol_msgs
@@ -2463,7 +2463,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2511,7 +2511,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2523,7 +2523,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2547,7 +2547,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2559,7 +2559,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2607,13 +2607,13 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2631,7 +2631,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2649,7 +2649,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Odometry.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2703,7 +2703,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2787,25 +2787,25 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg;/opt/ros/noetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs
@@ -2817,7 +2817,7 @@ _generate_msg_py(uavcontrol_msgs
 _generate_msg_py(uavcontrol_msgs
   "/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg"
   "${MSG_I_FLAGS}"
-  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg"
+  "/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg;/home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/uavcontrol_msgs
 )
 _generate_msg_py(uavcontrol_msgs

@@ -55,69 +55,70 @@
   (:serialization-length
    ()
    (+
-    ;; float32 _x_min
-    4
-    ;; float32 _x_max
-    4
-    ;; float32 _y_min
-    4
-    ;; float32 _y_max
-    4
-    ;; float32 _z_min
-    4
-    ;; float32 _z_max
-    4
+    ;; float64 _x_min
+    8
+    ;; float64 _x_max
+    8
+    ;; float64 _y_min
+    8
+    ;; float64 _y_max
+    8
+    ;; float64 _z_min
+    8
+    ;; float64 _z_max
+    8
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; float32 _x_min
-       (sys::poke _x_min (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; float32 _x_max
-       (sys::poke _x_max (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; float32 _y_min
-       (sys::poke _y_min (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; float32 _y_max
-       (sys::poke _y_max (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; float32 _z_min
-       (sys::poke _z_min (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; float32 _z_max
-       (sys::poke _z_max (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float64 _x_min
+       (sys::poke _x_min (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _x_max
+       (sys::poke _x_max (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _y_min
+       (sys::poke _y_min (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _y_max
+       (sys::poke _y_max (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _z_min
+       (sys::poke _z_min (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _z_max
+       (sys::poke _z_max (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; float32 _x_min
-     (setq _x_min (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; float32 _x_max
-     (setq _x_max (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; float32 _y_min
-     (setq _y_min (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; float32 _y_max
-     (setq _y_max (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; float32 _z_min
-     (setq _z_min (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; float32 _z_max
-     (setq _z_max (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float64 _x_min
+     (setq _x_min (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _x_max
+     (setq _x_max (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _y_min
+     (setq _y_min (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _y_max
+     (setq _y_max (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _z_min
+     (setq _z_min (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _z_max
+     (setq _z_max (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;;
    self)
   )
 
-(setf (get uavcontrol_msgs::GeoFence :md5sum-) "d44785c3961c1071248f125a86fee65b")
+(setf (get uavcontrol_msgs::GeoFence :md5sum-) "ad99bb284c3254d76796e1b66efe44bd")
 (setf (get uavcontrol_msgs::GeoFence :datatype-) "uavcontrol_msgs/GeoFence")
 (setf (get uavcontrol_msgs::GeoFence :definition-)
-      "float32 x_min
-float32 x_max
-float32 y_min
-float32 y_max
-float32 z_min
-float32 z_max
+      "float64 x_min
+float64 x_max
+float64 y_min
+float64 y_max
+float64 z_min
+float64 z_max
+
 
 ")
 
 
 
-(provide :uavcontrol_msgs/GeoFence "d44785c3961c1071248f125a86fee65b")
+(provide :uavcontrol_msgs/GeoFence "ad99bb284c3254d76796e1b66efe44bd")
 
 

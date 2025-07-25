@@ -71,8 +71,8 @@ CMakeFiles/livox_ros_driver2_generate_messages_nodejs: /home/amov/autouav_platfo
 
 /home/amov/autouav_platform/devel/share/gennodejs/ros/livox_ros_driver2/msg/LivoxCustomMsg.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/amov/autouav_platform/devel/share/gennodejs/ros/livox_ros_driver2/msg/LivoxCustomMsg.js: /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomMsg.msg
-/home/amov/autouav_platform/devel/share/gennodejs/ros/livox_ros_driver2/msg/LivoxCustomMsg.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/share/gennodejs/ros/livox_ros_driver2/msg/LivoxCustomMsg.js: /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomPoint.msg
+/home/amov/autouav_platform/devel/share/gennodejs/ros/livox_ros_driver2/msg/LivoxCustomMsg.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/livox_ros_driver2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from livox_ros_driver2/LivoxCustomMsg.msg"
 	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomMsg.msg -Ilivox_ros_driver2:/home/amov/autouav_platform/src/livox_ros_driver2/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p livox_ros_driver2 -o /home/amov/autouav_platform/devel/share/gennodejs/ros/livox_ros_driver2/msg
 

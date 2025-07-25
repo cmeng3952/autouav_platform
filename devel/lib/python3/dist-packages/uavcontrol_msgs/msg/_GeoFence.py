@@ -8,18 +8,19 @@ import struct
 
 
 class GeoFence(genpy.Message):
-  _md5sum = "d44785c3961c1071248f125a86fee65b"
+  _md5sum = "ad99bb284c3254d76796e1b66efe44bd"
   _type = "uavcontrol_msgs/GeoFence"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """float32 x_min
-float32 x_max
-float32 y_min
-float32 y_max
-float32 z_min
-float32 z_max
+  _full_text = """float64 x_min
+float64 x_max
+float64 y_min
+float64 y_max
+float64 z_min
+float64 z_max
+
 """
   __slots__ = ['x_min','x_max','y_min','y_max','z_min','z_max']
-  _slot_types = ['float32','float32','float32','float32','float32','float32']
+  _slot_types = ['float64','float64','float64','float64','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -71,7 +72,7 @@ float32 z_max
     """
     try:
       _x = self
-      buff.write(_get_struct_6f().pack(_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max))
+      buff.write(_get_struct_6d().pack(_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -86,8 +87,8 @@ float32 z_max
       end = 0
       _x = self
       start = end
-      end += 24
-      (_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max,) = _get_struct_6f().unpack(str[start:end])
+      end += 48
+      (_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max,) = _get_struct_6d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -101,7 +102,7 @@ float32 z_max
     """
     try:
       _x = self
-      buff.write(_get_struct_6f().pack(_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max))
+      buff.write(_get_struct_6d().pack(_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -117,8 +118,8 @@ float32 z_max
       end = 0
       _x = self
       start = end
-      end += 24
-      (_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max,) = _get_struct_6f().unpack(str[start:end])
+      end += 48
+      (_x.x_min, _x.x_max, _x.y_min, _x.y_max, _x.z_min, _x.z_max,) = _get_struct_6d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -127,9 +128,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_6f = None
-def _get_struct_6f():
-    global _struct_6f
-    if _struct_6f is None:
-        _struct_6f = struct.Struct("<6f")
-    return _struct_6f
+_struct_6d = None
+def _get_struct_6d():
+    global _struct_6d
+    if _struct_6d is None:
+        _struct_6d = struct.Struct("<6d")
+    return _struct_6d

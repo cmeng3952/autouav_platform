@@ -22,6 +22,7 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <rc_input.h>
 #include <std_msgs/Float32MultiArray.h>
+#include <uavcontrol_msgs/GeoFence.h>
 
 // 全局变量定义
 std::vector<float> input;
@@ -45,7 +46,7 @@ static std::vector<std::vector<float>> last_waypoints;
 RC_Input rc_input;
 ros::Publisher uav_setup_pub;  // 新增发布器
 bool is_command_control = false; // 添加缺失的变量定义
-ros::Publisher geo_fence_pub;  // 地理围栏发布者
+// ros::Publisher geo_fence_pub;  // 地理围栏发布者
 
 
 // MQTT 桥接类定义
@@ -270,7 +271,7 @@ int main(int argc, char **argv)
     ros::Publisher aruco_landing_pub = nh.advertise<std_msgs::Bool>("/aruco_landing", 10);
 
     // 【发布】地理围栏指令
-    geo_fence_pub = nh.advertise<uavcontrol_msgs::GeoFence>(uav_name + "/prometheus/geo_fence", 10);
+    ros::Publisher geo_fence_pub = nh.advertise<uavcontrol_msgs::GeoFence>(uav_name + "/prometheus/geo_fence", 10);
 
     //初始化数据
     int CMD = 0;
@@ -558,7 +559,7 @@ int main(int argc, char **argv)
                 ROS_INFO("[%s] 起飞指令已发送 >> 目标高度: %.1f米", uav_name.c_str(), Takeoff_height);
 
                 //阶段4：进入COMMAND_CONTROL模式                
-                rc_input.forceEnterCommandControl();
+                // rc_input.forceEnterCommandControl();//由于编译报错RC_Input 没有 forceEnterCommandControl 和 force_command_control所以这里注释了，需要可以自行添加，下面有关同理
                  uavcontrol_msgs::UAVSetup setup_msg;
                  setup_msg.header.stamp = ros::Time::now();
                  setup_msg.cmd = 3;
@@ -775,7 +776,8 @@ int main(int argc, char **argv)
             case 9:       
             {                
                 // 阶段1: 强制锁定COMMAND模式
-                rc_input.force_command_control = true; // 设置强制标志
+                // rc_input.force_command_control = true; // 设置强制标志
+                rc_input.enter_command_control = true;//上面注释修改成enter_command_control
                 uavcontrol_msgs::UAVSetup setup_msg;
                 setup_msg.header.stamp = ros::Time::now();
                 setup_msg.cmd = 3;
@@ -809,7 +811,8 @@ int main(int argc, char **argv)
                 }
 
                 // 阶段3: 清理状态
-                rc_input.force_command_control = false; 
+                // rc_input.force_command_control = false; 
+                rc_input.enter_command_control = false;//上面注释修改成enter_command_control
                 agent_command.header.stamp = ros::Time::now();
                 agent_command.Agent_CMD = uavcontrol_msgs::UAVCommand::Current_Pos_Hover;
                 uav_command_pub.publish(agent_command);

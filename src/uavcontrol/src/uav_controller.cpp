@@ -1797,9 +1797,9 @@ void UAV_controller::printf_param()
     cout << GREEN << "Disarm_height             : " << Disarm_height << " [m] " << TAIL << endl;
     cout << GREEN << "Land_speed                : " << Land_speed << " [m/s] " << TAIL << endl;
     cout << GREEN << "Rtl_height            : " << Rtl_height << " [m] " << TAIL << endl;
-    cout << GREEN << "from MQTT current_Takeoff_            : " << current_Takeoff_ << " [m] " << TAIL << endl;
-    cout << GREEN << "from MQTT current_land_speed_                : " << current_land_speed_ << " [m/s] " << TAIL << endl;
-    cout << GREEN << "from MQTT current_rtl_height_            : " << current_rtl_height_ << " [m] " << TAIL << endl;
+    cout << GREEN << "current_Takeoff_            : " << current_Takeoff_ << " [m] " << TAIL << endl;
+    cout << GREEN << "current_land_speed_                : " << current_land_speed_ << " [m/s] " << TAIL << endl;
+    cout << GREEN << "current_rtl_height_            : " << current_rtl_height_ << " [m] " << TAIL << endl;
     cout << GREEN << "geo_fence_x : " << uav_geo_fence.x_min << " [m]  to  " << uav_geo_fence.x_max << " [m]" << TAIL << endl;
     cout << GREEN << "geo_fence_y : " << uav_geo_fence.y_min << " [m]  to  " << uav_geo_fence.y_max << " [m]" << TAIL << endl;
     cout << GREEN << "geo_fence_z : " << uav_geo_fence.z_min << " [m]  to  " << uav_geo_fence.z_max << " [m]" << TAIL << endl;

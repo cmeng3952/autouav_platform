@@ -67,7 +67,7 @@ include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_StationCommand.
 include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_StationCommand.dir/progress.make
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_StationCommand:
-	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg geometry_msgs/Point:std_msgs/Header:geometry_msgs/PoseStamped:geometry_msgs/Pose:geometry_msgs/Quaternion
+	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/PoseStamped:geometry_msgs/Pose:std_msgs/Header
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_StationCommand.dir/codegen:
 .PHONY : CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_StationCommand.dir/codegen

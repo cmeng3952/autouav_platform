@@ -7,7 +7,5 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/amov/autouav_platform/devel:$CMAKE_PREFIX_PATH"
 export PWD='/home/amov/autouav_platform/build/livox_ros_driver2'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/amov/autouav_platform/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/amov/autouav_platform/src/uavcontrol_msgs:/home/amov/autouav_platform/src/communication:/home/amov/autouav_platform/src/uavcontrol:/home/amov/autouav_platform/src/livox_ros_driver2:$ROS_PACKAGE_PATH"
+export ROS_PACKAGE_PATH='/home/amov/autouav_platform/src/uavcontrol_msgs:/home/amov/autouav_platform/src/communication:/home/amov/autouav_platform/src/uavcontrol:/home/amov/autouav_platform/src/livox_ros_driver2:/home/amov/UAV_SDK/src/uavcontrol_msgs:/home/amov/UAV_SDK/src/communication:/home/amov/UAV_SDK/src/uavcontrol:/home/amov/UAV_SDK/src/livox_ros_driver2:/home/amov/spirecv-ros/cv_bridge_2004:/home/amov/spirecv-ros/spirecv_msgs:/home/amov/spirecv-ros/spirecv_ros:/opt/ros/noetic/share'

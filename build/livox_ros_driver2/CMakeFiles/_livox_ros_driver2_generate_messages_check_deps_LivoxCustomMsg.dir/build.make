@@ -67,7 +67,7 @@ include CMakeFiles/_livox_ros_driver2_generate_messages_check_deps_LivoxCustomMs
 include CMakeFiles/_livox_ros_driver2_generate_messages_check_deps_LivoxCustomMsg.dir/progress.make
 
 CMakeFiles/_livox_ros_driver2_generate_messages_check_deps_LivoxCustomMsg:
-	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py livox_ros_driver2 /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomMsg.msg std_msgs/Header:livox_ros_driver2/LivoxCustomPoint
+	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py livox_ros_driver2 /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomMsg.msg livox_ros_driver2/LivoxCustomPoint:std_msgs/Header
 
 CMakeFiles/_livox_ros_driver2_generate_messages_check_deps_LivoxCustomMsg.dir/codegen:
 .PHONY : CMakeFiles/_livox_ros_driver2_generate_messages_check_deps_LivoxCustomMsg.dir/codegen

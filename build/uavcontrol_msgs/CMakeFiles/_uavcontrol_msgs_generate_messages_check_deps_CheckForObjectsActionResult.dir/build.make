@@ -67,7 +67,7 @@ include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_CheckForObjects
 include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/progress.make
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_CheckForObjectsActionResult:
-	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg uavcontrol_msgs/BoundingBox:uavcontrol_msgs/CheckForObjectsResult:std_msgs/Header:uavcontrol_msgs/BoundingBoxes:actionlib_msgs/GoalStatus:actionlib_msgs/GoalID
+	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg uavcontrol_msgs/BoundingBox:uavcontrol_msgs/CheckForObjectsResult:actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:uavcontrol_msgs/BoundingBoxes:std_msgs/Header
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/codegen:
 .PHONY : CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/codegen

@@ -71,8 +71,8 @@ CMakeFiles/livox_ros_driver2_generate_messages_cpp: /home/amov/autouav_platform/
 
 /home/amov/autouav_platform/devel/include/livox_ros_driver2/LivoxCustomMsg.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/livox_ros_driver2/LivoxCustomMsg.h: /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomMsg.msg
-/home/amov/autouav_platform/devel/include/livox_ros_driver2/LivoxCustomMsg.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/livox_ros_driver2/LivoxCustomMsg.h: /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomPoint.msg
+/home/amov/autouav_platform/devel/include/livox_ros_driver2/LivoxCustomMsg.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/livox_ros_driver2/LivoxCustomMsg.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/livox_ros_driver2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from livox_ros_driver2/LivoxCustomMsg.msg"
 	cd /home/amov/autouav_platform/src/livox_ros_driver2 && /home/amov/autouav_platform/build/livox_ros_driver2/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/src/livox_ros_driver2/msg/LivoxCustomMsg.msg -Ilivox_ros_driver2:/home/amov/autouav_platform/src/livox_ros_driver2/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p livox_ros_driver2 -o /home/amov/autouav_platform/devel/include/livox_ros_driver2 -e /opt/ros/noetic/share/gencpp/cmake/..

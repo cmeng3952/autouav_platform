@@ -5,5 +5,11 @@
 ;;  FROM /home/amov/autouav_platform/src/uavcontrol/./package.xml (0.0.0)
 ;; USING /opt/ros/noetic/lib/python3/dist-packages/geneus/geneus_main.py /opt/ros/noetic/share/geneus/package.xml (3.0.0)
 ;;
+(ros::load-ros-package "actionlib_msgs")
+(ros::load-ros-package "geometry_msgs")
+(ros::load-ros-package "sensor_msgs")
+(ros::load-ros-package "spirecv_msgs")
 (ros::load-ros-package "std_msgs")
+(ros::load-ros-package "std_srvs")
+(ros::load-ros-package "uavcontrol_msgs")
 (ros::load-ros-package "uavcontrol")

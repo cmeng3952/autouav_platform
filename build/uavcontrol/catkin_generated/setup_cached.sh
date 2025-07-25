@@ -13,4 +13,4 @@ export PKG_CONFIG_PATH="/home/amov/autouav_platform/devel/lib/pkgconfig:$PKG_CON
 export PWD='/home/amov/autouav_platform/build/uavcontrol'
 export PYTHONPATH="/home/amov/autouav_platform/devel/lib/python3/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/amov/autouav_platform/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/amov/autouav_platform/src/uavcontrol_msgs:/home/amov/autouav_platform/src/communication:/home/amov/autouav_platform/src/uavcontrol:/home/amov/autouav_platform/src/livox_ros_driver2:/home/amov/autouav_platform/src/FAST_LIO:$ROS_PACKAGE_PATH"
+export ROS_PACKAGE_PATH="/home/amov/autouav_platform/src/uavcontrol_msgs:/home/amov/autouav_platform/src/communication:/home/amov/autouav_platform/src/uavcontrol:$ROS_PACKAGE_PATH"

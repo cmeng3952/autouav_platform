@@ -3,6 +3,7 @@
 
 CMakeFiles/uav_command_pub.dir/utils/uav_command_pub.cpp.o
  /home/amov/autouav_platform/src/uavcontrol/utils/uav_command_pub.cpp
+ /home/amov/autouav_platform/devel/include/uavcontrol_msgs/GeoFence.h
  /home/amov/autouav_platform/devel/include/uavcontrol_msgs/TextInfo.h
  /home/amov/autouav_platform/devel/include/uavcontrol_msgs/UAVCommand.h
  /home/amov/autouav_platform/devel/include/uavcontrol_msgs/UAVControlState.h

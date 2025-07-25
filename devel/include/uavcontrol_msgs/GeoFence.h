@@ -43,22 +43,22 @@ struct GeoFence_
 
 
 
-   typedef float _x_min_type;
+   typedef double _x_min_type;
   _x_min_type x_min;
 
-   typedef float _x_max_type;
+   typedef double _x_max_type;
   _x_max_type x_max;
 
-   typedef float _y_min_type;
+   typedef double _y_min_type;
   _y_min_type y_min;
 
-   typedef float _y_max_type;
+   typedef double _y_max_type;
   _y_max_type y_max;
 
-   typedef float _z_min_type;
+   typedef double _z_min_type;
   _z_min_type z_min;
 
-   typedef float _z_max_type;
+   typedef double _z_max_type;
   _z_max_type z_max;
 
 
@@ -152,12 +152,12 @@ struct MD5Sum< ::uavcontrol_msgs::GeoFence_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d44785c3961c1071248f125a86fee65b";
+    return "ad99bb284c3254d76796e1b66efe44bd";
   }
 
   static const char* value(const ::uavcontrol_msgs::GeoFence_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd44785c3961c1071ULL;
-  static const uint64_t static_value2 = 0x248f125a86fee65bULL;
+  static const uint64_t static_value1 = 0xad99bb284c3254d7ULL;
+  static const uint64_t static_value2 = 0x6796e1b66efe44bdULL;
 };
 
 template<class ContainerAllocator>
@@ -176,12 +176,13 @@ struct Definition< ::uavcontrol_msgs::GeoFence_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32 x_min\n"
-"float32 x_max\n"
-"float32 y_min\n"
-"float32 y_max\n"
-"float32 z_min\n"
-"float32 z_max\n"
+    return "float64 x_min\n"
+"float64 x_max\n"
+"float64 y_min\n"
+"float64 y_max\n"
+"float64 z_min\n"
+"float64 z_max\n"
+"\n"
 ;
   }
 
@@ -227,27 +228,27 @@ struct Printer< ::uavcontrol_msgs::GeoFence_<ContainerAllocator> >
     if (false || !indent.empty())
       s << std::endl;
     s << indent << "x_min: ";
-    Printer<float>::stream(s, indent + "  ", v.x_min);
+    Printer<double>::stream(s, indent + "  ", v.x_min);
     if (true || !indent.empty())
       s << std::endl;
     s << indent << "x_max: ";
-    Printer<float>::stream(s, indent + "  ", v.x_max);
+    Printer<double>::stream(s, indent + "  ", v.x_max);
     if (true || !indent.empty())
       s << std::endl;
     s << indent << "y_min: ";
-    Printer<float>::stream(s, indent + "  ", v.y_min);
+    Printer<double>::stream(s, indent + "  ", v.y_min);
     if (true || !indent.empty())
       s << std::endl;
     s << indent << "y_max: ";
-    Printer<float>::stream(s, indent + "  ", v.y_max);
+    Printer<double>::stream(s, indent + "  ", v.y_max);
     if (true || !indent.empty())
       s << std::endl;
     s << indent << "z_min: ";
-    Printer<float>::stream(s, indent + "  ", v.z_min);
+    Printer<double>::stream(s, indent + "  ", v.z_min);
     if (true || !indent.empty())
       s << std::endl;
     s << indent << "z_max: ";
-    Printer<float>::stream(s, indent + "  ", v.z_max);
+    Printer<double>::stream(s, indent + "  ", v.z_max);
   }
 };
 

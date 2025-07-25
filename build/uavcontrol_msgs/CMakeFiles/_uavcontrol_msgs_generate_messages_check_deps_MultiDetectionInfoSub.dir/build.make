@@ -67,7 +67,7 @@ include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiDetectionI
 include CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiDetectionInfoSub.dir/progress.make
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiDetectionInfoSub:
-	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg std_msgs/Header:uavcontrol_msgs/DetectionInfoSub
+	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py uavcontrol_msgs /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg uavcontrol_msgs/DetectionInfoSub:std_msgs/Header
 
 CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiDetectionInfoSub.dir/codegen:
 .PHONY : CMakeFiles/_uavcontrol_msgs_generate_messages_check_deps_MultiDetectionInfoSub.dir/codegen

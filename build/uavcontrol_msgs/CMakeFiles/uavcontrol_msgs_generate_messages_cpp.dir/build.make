@@ -157,8 +157,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/BoundingBoxes.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/BoundingBoxes.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/BoundingBoxes.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/BoundingBoxes.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/BoundingBoxes.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/BoundingBoxes.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from uavcontrol_msgs/BoundingBoxes.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -174,16 +174,16 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /opt/ros/noetic/share/sensor_msgs/msg/Image.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsAction.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating C++ code from uavcontrol_msgs/CheckForObjectsAction.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsAction.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -191,9 +191,9 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsFeedback.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionFeedback.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating C++ code from uavcontrol_msgs/CheckForObjectsActionFeedback.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionFeedback.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -201,9 +201,9 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /opt/ros/noetic/share/sensor_msgs/msg/Image.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsGoal.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionGoal.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating C++ code from uavcontrol_msgs/CheckForObjectsActionGoal.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionGoal.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -212,10 +212,10 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsActionResult.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating C++ code from uavcontrol_msgs/CheckForObjectsActionResult.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsActionResult.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -237,8 +237,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsResult.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsResult.h: /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsResult.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBox.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsResult.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsResult.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/BoundingBoxes.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsResult.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/CheckForObjectsResult.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating C++ code from uavcontrol_msgs/CheckForObjectsResult.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg/CheckForObjectsResult.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -380,24 +380,24 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfo.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfo.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfo.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfo.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfo.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfo.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfo.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Generating C++ code from uavcontrol_msgs/MultiDetectionInfo.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfo.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfoSub.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfoSub.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfoSub.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfoSub.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/DetectionInfoSub.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfoSub.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiDetectionInfoSub.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Generating C++ code from uavcontrol_msgs/MultiDetectionInfoSub.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiDetectionInfoSub.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUAVState.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUAVState.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUAVState.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUAVState.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUAVState.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/UAVState.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUAVState.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUAVState.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUAVState.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Generating C++ code from uavcontrol_msgs/MultiUAVState.msg"
@@ -405,8 +405,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUGVState.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUGVState.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/MultiUGVState.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUGVState.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUGVState.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/UGVState.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUGVState.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUGVState.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/MultiUGVState.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Generating C++ code from uavcontrol_msgs/MultiUGVState.msg"
@@ -414,15 +414,15 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/TwistWithCovariance.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/nav_msgs/msg/Odometry.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/PoseWithCovariance.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/nav_msgs/msg/Odometry.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/TwistWithCovariance.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/Odometry.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Generating C++ code from uavcontrol_msgs/Odometry.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/Odometry.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -435,8 +435,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/OutputData.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/OutputData.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/OutputData.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/OutputData.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/OutputData.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/OutputData.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/OutputData.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/OutputData.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Generating C++ code from uavcontrol_msgs/OutputData.msg"
@@ -464,8 +464,8 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/PositionCommand.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/PositionCommand.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/PositionCommand.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/PositionCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/PositionCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/PositionCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/PositionCommand.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/PositionCommand.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Generating C++ code from uavcontrol_msgs/PositionCommand.msg"
@@ -487,9 +487,9 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/SO3Command.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/AuxCommand.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/SO3Command.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Generating C++ code from uavcontrol_msgs/SO3Command.msg"
@@ -510,11 +510,11 @@ CMakeFiles/uavcontrol_msgs_generate_messages_cpp: /home/amov/autouav_platform/de
 
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/amov/autouav_platform/devel/include/uavcontrol_msgs/StationCommand.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/amov/autouav_platform/build/uavcontrol_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Generating C++ code from uavcontrol_msgs/StationCommand.msg"
 	cd /home/amov/autouav_platform/src/uavcontrol_msgs && /home/amov/autouav_platform/build/uavcontrol_msgs/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/amov/autouav_platform/src/uavcontrol_msgs/msg/StationCommand.msg -Iuavcontrol_msgs:/home/amov/autouav_platform/src/uavcontrol_msgs/msg -Iuavcontrol_msgs:/home/amov/autouav_platform/devel/share/uavcontrol_msgs/msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -p uavcontrol_msgs -o /home/amov/autouav_platform/devel/include/uavcontrol_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
