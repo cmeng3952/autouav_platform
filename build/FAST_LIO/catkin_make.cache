@@ -1,2 +1,0 @@
-.
--DCATKIN_DEVEL_PREFIX=/home/amov/autouav_platform/devel -DCMAKE_INSTALL_PREFIX=/home/amov/autouav_platform/install -G Unix Makefiles

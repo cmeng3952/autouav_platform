@@ -1,1 +1,0 @@
-/usr/lib/ccache/c++ -fPIC -std=c++17 -O3 -std=c++14 -pthread -std=c++0x -std=c++14 -fexceptions -fopenmp -g -shared -Wl,-soname,libgmock_maind.so -o ../lib/libgmock_maind.so CMakeFiles/gmock_main.dir/src/gmock_main.cc.o  -Wl,-rpath,/home/amov/autouav_platform/build/FAST_LIO/gtest/lib ../lib/libgmockd.so ../lib/libgtestd.so

@@ -1,8 +1,0 @@
-# generated from catkin/cmake/template/pkg.context.pc.in
-CATKIN_PACKAGE_PREFIX = ""
-PROJECT_PKG_CONFIG_INCLUDE_DIRS = "/home/amov/autouav_platform/devel/include".split(';') if "/home/amov/autouav_platform/devel/include" != "" else []
-PROJECT_CATKIN_DEPENDS = "message_runtime;std_srvs;actionlib_msgs;geometry_msgs;sensor_msgs;message_runtime;std_msgs".replace(';', ' ')
-PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
-PROJECT_NAME = "uavcontrol_msgs"
-PROJECT_SPACE_DIR = "/home/amov/autouav_platform/devel"
-PROJECT_VERSION = "0.1.0"
