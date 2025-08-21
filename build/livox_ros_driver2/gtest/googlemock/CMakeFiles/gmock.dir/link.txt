@@ -1,0 +1,1 @@
+/usr/lib/ccache/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libgmock.so -o ../lib/libgmock.so "CMakeFiles/gmock.dir/src/gmock-all.cc.o"  -Wl,-rpath,/home/amov/autouav_platform/build/livox_ros_driver2/gtest/lib ../lib/libgtest.so -lpthread

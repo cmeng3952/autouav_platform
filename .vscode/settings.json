@@ -98,5 +98,6 @@
         "future": "cpp",
         "shared_mutex": "cpp",
         "core": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/orangepi/autouav_platform/src/uavcontrol"
 }

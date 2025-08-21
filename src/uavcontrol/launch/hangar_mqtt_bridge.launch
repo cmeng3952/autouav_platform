@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="uavcontrol" type="hangar_mqtt_bridge" name="hangar_mqtt_bridge" output="screen">
+    <param name="mqtt_broker" value="tcp://47.104.183.127:1983" />
+    <param name="mqtt_user" value="pxtest" />
+    <param name="mqtt_password" value="test2025@px" />
+    <param name="mqtt_sub_topic" value="uavhangar_mqtt/state/hangar1" />
+    <param name="ros_pub_topic" value="hangar/uav_state" />
+  </node>
+</launch>
+
+
+

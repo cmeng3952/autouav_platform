@@ -1,0 +1,1 @@
+/usr/lib/ccache/c++ -fPIC -shared -Wl,-soname,libuav_controller.so -o /home/amov/autouav_platform/devel/lib/libuav_controller.so CMakeFiles/uav_controller.dir/src/uav_controller.cpp.o CMakeFiles/uav_controller.dir/home/amov/autouav_platform/src/communication/src/param_manager.cpp.o   -L/usr/local/lib

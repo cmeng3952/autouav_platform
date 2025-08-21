@@ -5,6 +5,7 @@
 #include <uavcontrol_msgs/UAVCommand.h>
 #include <spirecv_msgs/TargetsInFrame.h>
 #include <std_msgs/Bool.h>
+#include <std_msgs/UInt8.h>
 #include <std_msgs/Float64.h>
 #include <algorithm>
 #include <geometry_msgs/Twist.h>
@@ -13,6 +14,7 @@
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/State.h>
+#include <sensor_msgs/Range.h>
 #include <cmath>
 #include <string>
 
@@ -74,6 +76,10 @@ public:
                      switch_flag(false), first_19_idx(-1), first_43_idx(-1),
                      system_flag(true), current_mode_(LandingMode::HOVER),
                      rel_alt_(0.0), rel_alt_available_(false),
+                     lidar_height_(0.0), lidar_available_(false), last_lidar_time_(0),
+                     height_source_priority_(3), lidar_enable_(true), 
+                     lidar_timeout_(1.0), lidar_noise_threshold_(0.1), lidar_fusion_weight_(0.8),
+                     enable_lidar_debug_(true),
                      last_aruco_lost_time_(0), aruco_lost_buffer_active_(false),
                      last_target_yaw_(0.0), yaw_initialized_(false) {
         
@@ -89,20 +95,31 @@ public:
         pose_sub = nh_.subscribe<geometry_msgs::PoseStamped>("/uav1/mavros/local_position/pose", 10, &ArucoTracker::pose_cb, this);
         // 添加相对高度订阅，用于更准确的高度数据
         rel_alt_sub = nh_.subscribe<std_msgs::Float64>("/uav1/mavros/global_position/rel_alt", 10, &ArucoTracker::relAltCallback, this);
+        // 添加激光测距订阅，用于精确的地面距离测量
+        lidar_sub = nh_.subscribe<sensor_msgs::Range>("/uav1/mavros/distance_sensor/hrlv_ez4_pub", 10, &ArucoTracker::lidarCallback, this);
         aruco_dection_sub = nh_.subscribe<spirecv_msgs::TargetsInFrame>("/uav1/uavcontrol/aruco_detection", 10, &ArucoTracker::arucoCenterCallback, this);
         aruco_trigger_sub = nh_.subscribe<std_msgs::Bool>("/aruco_landing", 10, &ArucoTracker::arucotriggerCallback, this);
+        // Hangar state (uav_state, uint8) from MQTT bridge
+        hangar_state_sub_ = nh_.subscribe<std_msgs::UInt8>("/hangar/uav_state", 10, &ArucoTracker::hangarStateCallback, this);
+
+        // Parameters to control hangar gating
+        nh_.param("enable_hangar_trigger", enable_hangar_trigger_, true);
+        nh_.param("hangar_ready_value", hangar_ready_value_, 1);
         mavros_state_sub = nh_.subscribe<mavros_msgs::State>("/uav1/mavros/state", 10, &ArucoTracker::mavrosStateCallback, this);
-        control_timer_ = nh_.createTimer(ros::Duration(0.05), &ArucoTracker::controlLoop, this);
+        // 使用可配置的控制频率创建Timer
+        control_timer_ = nh_.createTimer(ros::Duration(1.0/control_frequency_), &ArucoTracker::controlLoop, this);
         
-        // 启动时显示坐标系转换验证指南
-        verifyCoordinateTransform();
-        
-        // 测试一些典型的坐标转换场景
-        ROS_INFO("=== 坐标系转换测试示例 ===");
-        testCoordinateTransform(0.7, 0.5);  // ArUco在右侧
-        testCoordinateTransform(0.3, 0.5);  // ArUco在左侧
-        testCoordinateTransform(0.5, 0.7);  // ArUco在下方
-        testCoordinateTransform(0.5, 0.3);  // ArUco在上方
+        // 启动时显示坐标系转换验证指南（根据调试参数决定）
+        if (enable_coordinate_transform_test_) {
+            verifyCoordinateTransform();
+            
+            // 测试一些典型的坐标转换场景
+            ROS_INFO("=== 坐标系转换测试示例 ===");
+            testCoordinateTransform(0.7, 0.5);  // ArUco在右侧
+            testCoordinateTransform(0.3, 0.5);  // ArUco在左侧
+            testCoordinateTransform(0.5, 0.7);  // ArUco在下方
+            testCoordinateTransform(0.5, 0.3);  // ArUco在上方
+        }
         
         ROS_INFO("ArucoTracker initialized successfully with Adaptive PID and MAVROS control");
     }
@@ -119,20 +136,98 @@ public:
         
         // 定期打印相对高度vs本地高度的对比（避免过于频繁）
         static ros::Time last_height_print = ros::Time(0);
-        if ((ros::Time::now() - last_height_print).toSec() > 5.0) {
-            ROS_INFO("Height comparison: rel_alt=%.2fm, local_z=%.2fm, diff=%.2fm", 
-                     rel_alt_, odom_z, fabs(rel_alt_ - odom_z));
+        if ((ros::Time::now() - last_height_print).toSec() > height_print_interval_) {
+            ROS_INFO("Height comparison: rel_alt=%.2fm, local_z=%.2fm, lidar=%.2fm, fused=%.2fm", 
+                     rel_alt_, odom_z, lidar_height_, getCurrentHeight());
             last_height_print = ros::Time::now();
         }
     }
 
-    // 获取当前高度（优先使用相对高度）
-    double getCurrentHeight() const {
-        if (rel_alt_available_) {
-            return rel_alt_;
+    void lidarCallback(const sensor_msgs::Range::ConstPtr& msg) {
+        // 检查激光测距数据有效性
+        if (msg->range >= msg->min_range && msg->range <= msg->max_range) {
+            // 简单的噪声过滤
+            if (!lidar_available_ || fabs(msg->range - lidar_height_) < lidar_noise_threshold_) {
+                lidar_height_ = msg->range;
+                lidar_available_ = true;
+                last_lidar_time_ = ros::Time::now();
+                
+                if (enable_lidar_debug_) {
+                    static ros::Time last_lidar_print = ros::Time(0);
+                    if ((ros::Time::now() - last_lidar_print).toSec() > 2.0) {
+                        ROS_INFO("Lidar height: %.2fm (range: [%.2f, %.2f]m)", 
+                                 lidar_height_, msg->min_range, msg->max_range);
+                        last_lidar_print = ros::Time::now();
+                    }
+                }
+            } else {
+                if (enable_lidar_debug_) {
+                    ROS_WARN("Lidar noise filtered: current=%.2fm, new=%.2fm, diff=%.3fm", 
+                             lidar_height_, msg->range, fabs(msg->range - lidar_height_));
+                }
+            }
         } else {
-            return odom_z;
+            if (enable_lidar_debug_) {
+                ROS_WARN("Lidar out of range: %.2fm (valid: [%.2f, %.2f]m)", 
+                         msg->range, msg->min_range, msg->max_range);
+            }
         }
+    }
+
+    // 获取当前高度（集成激光测距、GPS相对高度和本地高度）
+    double getCurrentHeight() const {
+        // 检查激光测距数据是否可用和新鲜
+        bool lidar_fresh = lidar_available_ && 
+                          (ros::Time::now() - last_lidar_time_).toSec() < lidar_timeout_;
+        
+        // 根据配置的高度数据源优先级选择高度数据
+        switch (height_source_priority_) {
+            case 0: // 仅GPS相对高度
+                if (rel_alt_available_) {
+                    return rel_alt_;
+                }
+                return odom_z; // 备用本地高度
+                
+            case 1: // 仅激光测距
+                if (lidar_fresh && lidar_height_ > 0.1) {  // 最小有效距离检查
+                    return lidar_height_;
+                }
+                return rel_alt_available_ ? rel_alt_ : odom_z; // 备用高度
+                
+            case 2: // 激光测距+GPS融合
+                if (lidar_fresh && rel_alt_available_) {
+                    // 加权融合：激光测距权重更高
+                    return lidar_fusion_weight_ * lidar_height_ + 
+                           (1.0 - lidar_fusion_weight_) * rel_alt_;
+                } else if (lidar_fresh) {
+                    return lidar_height_;
+                } else if (rel_alt_available_) {
+                    return rel_alt_;
+                }
+                return odom_z;
+                
+            case 3: // 激光测距优先，GPS备用
+            default:
+                if (lidar_fresh && lidar_height_ > 0.1) {
+                    return lidar_height_;
+                } else if (rel_alt_available_) {
+                    return rel_alt_;
+                }
+                return odom_z;
+        }
+    }
+    
+    // 获取高度数据源信息
+    std::string getHeightSourceInfo() const {
+        bool lidar_fresh = lidar_available_ && 
+                          (ros::Time::now() - last_lidar_time_).toSec() < lidar_timeout_;
+        
+        std::string source_names[] = {"GPS_ONLY", "LIDAR_ONLY", "LIDAR_GPS_FUSION", "LIDAR_PRIORITY"};
+        std::string source_name = (height_source_priority_ >= 0 && height_source_priority_ <= 3) ? 
+                                 source_names[height_source_priority_] : "UNKNOWN";
+        
+        return source_name + " (Lidar:" + (lidar_fresh ? "OK" : "FAIL") + 
+               ", GPS:" + (rel_alt_available_ ? "OK" : "FAIL") + ")";
     }
 
     void arucoCenterCallback(const spirecv_msgs::TargetsInFrame::ConstPtr& msg) {
@@ -215,8 +310,31 @@ public:
     }
 
     void arucotriggerCallback(const std_msgs::Bool::ConstPtr & msg){
-        is_trigger_ = msg->data;
-        ROS_INFO("Aruco landing trigger: %s", is_trigger_ ? "ON" : "OFF");
+        is_trigger_manual_ = msg->data;
+        updateCombinedTrigger();
+        ROS_INFO("Aruco landing trigger(manual): %s, gate=%s, hangar=%s -> combined=%s",
+                 is_trigger_manual_ ? "ON" : "OFF",
+                 enable_hangar_trigger_ ? "ON" : "OFF",
+                 (last_hangar_state_ == hangar_ready_value_) ? "READY" : "NOT_READY",
+                 is_trigger_ ? "ON" : "OFF");
+    }
+
+    void hangarStateCallback(const std_msgs::UInt8::ConstPtr& msg) {
+        last_hangar_state_ = static_cast<int>(msg->data);
+        updateCombinedTrigger();
+        ROS_INFO_THROTTLE(1.0, "Hangar state=%d, expected=%d, gate=%s, combined_trigger=%s",
+                          last_hangar_state_, hangar_ready_value_,
+                          enable_hangar_trigger_ ? "ON" : "OFF",
+                          is_trigger_ ? "ON" : "OFF");
+    }
+
+    void updateCombinedTrigger() {
+        if (!enable_hangar_trigger_) {
+            is_trigger_ = is_trigger_manual_;
+            return;
+        }
+        const bool hangar_ready = (last_hangar_state_ == hangar_ready_value_);
+        is_trigger_ = is_trigger_manual_ && hangar_ready;
     }
     
     void mavrosStateCallback(const mavros_msgs::State::ConstPtr& msg) {
@@ -271,14 +389,14 @@ public:
         // 关键修复：确保OFFBOARD模式设置和维持
         // 定期检查模式状态，避免频繁调用服务
         static ros::Time last_offboard_check = ros::Time(0);
-        if ((ros::Time::now() - last_offboard_check).toSec() > 1.0) {  // 每秒检查一次
+        if ((ros::Time::now() - last_offboard_check).toSec() > offboard_check_interval_) {
             ensure_offboard_mode();
             last_offboard_check = ros::Time::now();
         }
         
         // 增强的状态监控和调试信息
         static ros::Time last_status_print = ros::Time(0);
-        bool should_print_status = (ros::Time::now() - last_status_print).toSec() > 2.0;
+        bool should_print_status = (ros::Time::now() - last_status_print).toSec() > status_print_interval_;
         
         if (should_print_status) {
             double current_height = getCurrentHeight();
@@ -287,8 +405,10 @@ public:
                      mavros_state_.mode.c_str(), 
                      mavros_state_.armed ? "YES" : "NO",
                      mavros_state_.connected ? "YES" : "NO");
-            ROS_INFO("Height: %.2fm (%s), Position: [%.2f, %.2f, %.2f]", 
-                     current_height, rel_alt_available_ ? "rel_alt" : "local_z", odom_x, odom_y, odom_z);
+            ROS_INFO("Height: %.2fm [%s], Position: [%.2f, %.2f, %.2f]", 
+                     current_height, getHeightSourceInfo().c_str(), odom_x, odom_y, odom_z);
+            ROS_INFO("Height sources: GPS=%.2fm, Lidar=%.2fm, Local=%.2fm", 
+                     rel_alt_, lidar_height_, odom_z);
             ROS_INFO("ArUco: detected=%s, has_19=%d, has_43=%d, trigger=%d, buffer_active=%s", 
                      is_aruco_detected_ ? "YES" : "NO", current_has_19, current_has_43, is_trigger_,
                      aruco_lost_buffer_active_ ? "YES" : "NO");
@@ -353,6 +473,7 @@ public:
 private:
     // 加载参数
     void loadParams() {
+        // 基础PID参数
         nh_.param("/mission_aruco_land_node/p_gain_x", p_gain_x, 0.5);
         nh_.param("/mission_aruco_land_node/i_gain_x", i_gain_x, 0.01);
         nh_.param("/mission_aruco_land_node/d_gain_x", d_gain_x, 0.1);
@@ -360,6 +481,92 @@ private:
         nh_.param("/mission_aruco_land_node/i_gain_y", i_gain_y, 0.01);
         nh_.param("/mission_aruco_land_node/d_gain_y", d_gain_y, 0.1);
         nh_.param("/mission_aruco_land_node/p_gain_z", p_z, 0.3);
+        
+        // 控制系统参数
+        nh_.param("/mission_aruco_land_node/control_frequency", control_frequency_, 20.0);
+        nh_.param("/mission_aruco_land_node/data_timeout", DATA_TIMEOUT, 0.5);
+        nh_.param("/mission_aruco_land_node/aruco_lost_buffer_time", ARUCO_LOST_BUFFER_TIME, 2.0);
+        
+        // 高度阈值参数
+        nh_.param("/mission_aruco_land_node/height_rough_land", HEIGHT_ROUGH_LAND, 1.0);
+        nh_.param("/mission_aruco_land_node/height_fine_land", HEIGHT_FINE_LAND, 0.5);
+        
+        // 粗降落模式参数
+        nh_.param("/mission_aruco_land_node/rough_land/max_vel_high", rough_land_params_.max_vel_high, 0.4);
+        nh_.param("/mission_aruco_land_node/rough_land/max_vel_medium", rough_land_params_.max_vel_medium, 0.3);
+        nh_.param("/mission_aruco_land_node/rough_land/max_vel_low", rough_land_params_.max_vel_low, 0.2);
+        nh_.param("/mission_aruco_land_node/rough_land/z_vel_high", rough_land_params_.z_vel_high, -0.6);
+        nh_.param("/mission_aruco_land_node/rough_land/z_vel_medium", rough_land_params_.z_vel_medium, -0.4);
+        nh_.param("/mission_aruco_land_node/rough_land/z_vel_approach", rough_land_params_.z_vel_approach, -0.2);
+        nh_.param("/mission_aruco_land_node/rough_land/z_vel_transition", rough_land_params_.z_vel_transition, -0.1);
+        
+        // 精降落模式参数
+        nh_.param("/mission_aruco_land_node/fine_land/max_vel_upper", fine_land_params_.max_vel_upper, 0.25);
+        nh_.param("/mission_aruco_land_node/fine_land/max_vel_middle", fine_land_params_.max_vel_middle, 0.2);
+        nh_.param("/mission_aruco_land_node/fine_land/max_vel_lower", fine_land_params_.max_vel_lower, 0.15);
+        nh_.param("/mission_aruco_land_node/fine_land/z_vel_upper", fine_land_params_.z_vel_upper, -0.25);
+        nh_.param("/mission_aruco_land_node/fine_land/z_vel_middle", fine_land_params_.z_vel_middle, -0.2);
+        nh_.param("/mission_aruco_land_node/fine_land/z_vel_lower", fine_land_params_.z_vel_lower, -0.15);
+        nh_.param("/mission_aruco_land_node/fine_land/z_vel_final", fine_land_params_.z_vel_final, -0.1);
+        
+        // 自适应PID参数 - 高度因子
+        nh_.param("/mission_aruco_land_node/adaptive_pid/height_factors/very_high", height_factors_.very_high, 1.3);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/height_factors/high", height_factors_.high, 1.1);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/height_factors/medium", height_factors_.medium, 0.9);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/height_factors/low", height_factors_.low, 0.7);
+        
+        // 自适应PID参数 - 误差因子
+        //nh_.param("/mission_aruco_land_node/adaptive_pid/error_factors/large", error_factors_.large, 1.4);
+        //nh_.param("/mission_aruco_land_node/adaptive_pid/error_factors/medium", error_factors_.medium, 1.2);
+        //nh_.param("/mission_aruco_land_node/adaptive_pid/error_factors/small", error_factors_.small, 1.0);
+        //nh_.param("/mission_aruco_land_node/adaptive_pid/error_factors/tiny", error_factors_.tiny, 0.8);
+        
+        // 自适应PID参数 - 模式因子
+        nh_.param("/mission_aruco_land_node/adaptive_pid/mode_factors/rough_land", mode_factors_.rough_land, 1.2);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/mode_factors/fine_land", mode_factors_.fine_land, 0.9);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/mode_factors/default", mode_factors_.default_mode, 1.0);
+        
+        // 自适应PID参数 - 限制范围
+        nh_.param("/mission_aruco_land_node/adaptive_pid/limits/kp_min", adaptive_limits_.kp_min, 0.3);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/limits/kp_max", adaptive_limits_.kp_max, 2.5);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/limits/ki_min", adaptive_limits_.ki_min, 0.5);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/limits/ki_max", adaptive_limits_.ki_max, 1.5);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/limits/kd_min", adaptive_limits_.kd_min, 0.7);
+        nh_.param("/mission_aruco_land_node/adaptive_pid/limits/kd_max", adaptive_limits_.kd_max, 1.8);
+        
+        // 偏航控制参数
+        nh_.param("/mission_aruco_land_node/yaw_control/max_yaw_rate", max_yaw_rate_, 1.0);
+        
+        // 安全参数
+        nh_.param("/mission_aruco_land_node/safety/offboard_check_interval", offboard_check_interval_, 1.0);
+        nh_.param("/mission_aruco_land_node/safety/status_print_interval", status_print_interval_, 2.0);
+        nh_.param("/mission_aruco_land_node/safety/param_print_interval", param_print_interval_, 3.0);
+        nh_.param("/mission_aruco_land_node/safety/height_print_interval", height_print_interval_, 5.0);
+        
+        // 激光测距参数
+        nh_.param("/mission_aruco_land_node/height_source_priority", height_source_priority_, 3);
+        nh_.param("/mission_aruco_land_node/lidar/enable", lidar_enable_, true);
+        nh_.param("/mission_aruco_land_node/lidar/topic_name", lidar_topic_, 
+                  std::string("/uav1/mavros/distance_sensor/hrlv_ez4_pub"));
+        nh_.param("/mission_aruco_land_node/lidar/timeout", lidar_timeout_, 1.0);
+        nh_.param("/mission_aruco_land_node/lidar/noise_threshold", lidar_noise_threshold_, 0.1);
+        nh_.param("/mission_aruco_land_node/lidar/fusion_weight", lidar_fusion_weight_, 0.8);
+        
+        // 调试参数
+        nh_.param("/mission_aruco_land_node/debug/enable_coordinate_transform_test", enable_coordinate_transform_test_, true);
+        nh_.param("/mission_aruco_land_node/debug/enable_aruco_detection_debug", enable_aruco_detection_debug_, true);
+        nh_.param("/mission_aruco_land_node/debug/enable_pid_debug", enable_pid_debug_, true);
+        nh_.param("/mission_aruco_land_node/debug/enable_mode_debug", enable_mode_debug_, true);
+        nh_.param("/mission_aruco_land_node/debug/enable_lidar_debug", enable_lidar_debug_, true);
+        
+        ROS_INFO("ArUco Landing Parameters Loaded:");
+        ROS_INFO("  Control frequency: %.1f Hz", control_frequency_);
+        ROS_INFO("  Data timeout: %.1f s", DATA_TIMEOUT);
+        ROS_INFO("  Buffer time: %.1f s", ARUCO_LOST_BUFFER_TIME);
+        ROS_INFO("  Height thresholds: rough=%.1f m, fine=%.1f m", HEIGHT_ROUGH_LAND, HEIGHT_FINE_LAND);
+        ROS_INFO("  Height source priority: %d", height_source_priority_);
+        ROS_INFO("  Lidar enabled: %s, topic: %s", lidar_enable_ ? "YES" : "NO", lidar_topic_.c_str());
+        ROS_INFO("  Max yaw rate: %.1f rad/s", max_yaw_rate_);
     }
     
     // 坐标系转换验证函数
@@ -399,45 +606,49 @@ private:
         // 1. 高度自适应系数 (高度越低，参数越保守)
         double height_factor;
         if (height > 2.0) {
-            height_factor = 1.3;      // 高空：更激进
+            height_factor = height_factors_.very_high;      // 高空：更激进
         } else if (height > 1.0) {
-            height_factor = 1.1;      // 中空：稍激进
+            height_factor = height_factors_.high;           // 中空：稍激进
         } else if (height > 0.5) {
-            height_factor = 0.9;      // 低空：保守
+            height_factor = height_factors_.medium;         // 低空：保守
         } else {
-            height_factor = 0.7;      // 极低空：非常保守
+            height_factor = height_factors_.low;            // 极低空：非常保守
         }
         
         // 2. 误差自适应系数 (误差越大，比例增益适当增加)
         double error_factor;
         if (error_magnitude > 0.3) {
-            error_factor = 1.4;       // 大误差：强响应
+            //error_factor = error_factors_.large;       // 大误差：强响应
+            error_factor = 1.4;
         } else if (error_magnitude > 0.15) {
-            error_factor = 1.2;       // 中误差：适中响应
+            //error_factor = error_factors_.medium;      // 中误差：适中响应
+            error_factor = 1.2;
         } else if (error_magnitude > 0.05) {
-            error_factor = 1.0;       // 小误差：标准响应
+            //error_factor = error_factors_.small;       // 小误差：标准响应
+            error_factor = 1.0;
         } else {
-            error_factor = 0.8;       // 极小误差：柔和响应
+            //error_factor = error_factors_.tiny;        // 极小误差：柔和响应
+            error_factor = 0.8;
         }
         
         // 3. 模式自适应系数
         double mode_factor;
         switch(mode) {
             case LandingMode::ROUGH_LAND:
-                mode_factor = 1.2;    // 粗降落：较激进
+                mode_factor = mode_factors_.rough_land;    // 粗降落：较激进
                 break;
             case LandingMode::FINE_LAND:
-                mode_factor = 0.9;    // 精降落：保守
+                mode_factor = mode_factors_.fine_land;     // 精降落：保守
                 break;
             default:
-                mode_factor = 1.0;    // 其他模式：标准
+                mode_factor = mode_factors_.default_mode;  // 其他模式：标准
                 break;
         }
         
         // 综合调整系数 (限制调整范围，避免过度调整)
-        double kp_factor = std::clamp(height_factor * error_factor * mode_factor, 0.3, 2.5);
-        double ki_factor = std::clamp(height_factor * 0.8, 0.5, 1.5);  // 积分项调整更保守
-        double kd_factor = std::clamp(height_factor * 1.1, 0.7, 1.8);  // 微分项适中调整
+        double kp_factor = std::clamp(height_factor * error_factor * mode_factor, adaptive_limits_.kp_min, adaptive_limits_.kp_max);
+        double ki_factor = std::clamp(height_factor * 0.8, adaptive_limits_.ki_min, adaptive_limits_.ki_max);  // 积分项调整更保守
+        double kd_factor = std::clamp(height_factor * 1.1, adaptive_limits_.kd_min, adaptive_limits_.kd_max);  // 微分项适中调整
         
         // 计算最终参数
         params.kp_x = base_kp_x * kp_factor;
@@ -449,7 +660,7 @@ private:
         
         // 调试输出
         static ros::Time last_param_print = ros::Time(0);
-        if ((ros::Time::now() - last_param_print).toSec() > 3.0) {
+        if (enable_pid_debug_ && (ros::Time::now() - last_param_print).toSec() > param_print_interval_) {
             ROS_INFO("Adaptive PID: height=%.2f, error_mag=%.3f, mode=%d", height, error_magnitude, static_cast<int>(mode));
             ROS_INFO("Factors: height=%.2f, error=%.2f, mode=%.2f -> kp=%.2f, ki=%.2f, kd=%.2f", 
                      height_factor, error_factor, mode_factor, kp_factor, ki_factor, kd_factor);
@@ -609,20 +820,22 @@ private:
         double output_z;
         if (current_height > 2.0) {
             // 高空快速下降
-            output_z = -0.6;  
+            output_z = rough_land_params_.z_vel_high;  
         } else if (current_height > 1.2) {
             // 中等高度适中下降
-            output_z = -0.4;
+            output_z = rough_land_params_.z_vel_medium;
         } else if (current_height > 0.8) {
             // 接近精降落阈值时减速
-            output_z = -0.2;
+            output_z = rough_land_params_.z_vel_approach;
         } else {
             // 已经进入精降落范围，极慢下降
-            output_z = -0.1;
+            output_z = rough_land_params_.z_vel_transition;
         }
         
         // 自适应输出限制（根据高度调整最大速度）
-        double max_vel = (current_height > 1.5) ? 0.4 : (current_height > 0.8) ? 0.3 : 0.2;
+        double max_vel = (current_height > 1.5) ? rough_land_params_.max_vel_high : 
+                        (current_height > 0.8) ? rough_land_params_.max_vel_medium : 
+                        rough_land_params_.max_vel_low;
         output_x = std::clamp(output_x, -max_vel, max_vel);
         output_y = std::clamp(output_y, -max_vel, max_vel);
         
@@ -663,17 +876,19 @@ private:
         // 精降落模式Z轴控制逻辑（针对0.5-0.8m范围）
         double output_z;
         if (current_height > 0.7) {
-            output_z = -0.25;  // 精降落上段，适中下降
+            output_z = fine_land_params_.z_vel_upper;  // 精降落上段，适中下降
         } else if (current_height > 0.6) {
-            output_z = -0.2;   // 精降落中段，稍慢下降
+            output_z = fine_land_params_.z_vel_middle;   // 精降落中段，稍慢下降
         } else if (current_height > 0.5) {
-            output_z = -0.15;  // 接近AUTO.LAND阈值，慢速下降
+            output_z = fine_land_params_.z_vel_lower;  // 接近AUTO.LAND阈值，慢速下降
         } else {
-            output_z = -0.1;   // 保险起见，极慢下降
+            output_z = fine_land_params_.z_vel_final;   // 保险起见，极慢下降
         }
         
         // 精降落模式的自适应输出限制（更保守）
-        double max_vel = (current_height > 0.7) ? 0.25 : (current_height > 0.6) ? 0.2 : 0.15;
+        double max_vel = (current_height > 0.7) ? fine_land_params_.max_vel_upper : 
+                        (current_height > 0.6) ? fine_land_params_.max_vel_middle : 
+                        fine_land_params_.max_vel_lower;
         output_x = std::clamp(output_x, -max_vel, max_vel);
         output_y = std::clamp(output_y, -max_vel, max_vel);
         
@@ -718,7 +933,7 @@ private:
         
         // 计算偏航角速率，并限制在合理范围内
         float yaw_rate = yaw_error / time_diff;
-        yaw_rate = std::clamp(yaw_rate, -1.0f, 1.0f); // 限制在±1 rad/s
+        yaw_rate = std::clamp(yaw_rate, -(float)max_yaw_rate_, (float)max_yaw_rate_); // 使用可配置的偏航角速率限制
         
         // 更新历史值
         last_target_yaw_ = target_yaw;
@@ -811,15 +1026,49 @@ private:
         mavros_setpoint_pub.publish(pos_setpoint);
     }
 
-    // 常量定义
-    static constexpr double DATA_TIMEOUT = 0.5;           // 数据超时时间(秒)
-    static constexpr double ARUCO_LOST_BUFFER_TIME = 2.0; // ArUco丢失缓冲时间(秒)
-    static constexpr double HEIGHT_ROUGH_LAND = 1.0;      // 粗降落高度阈值(米) - 0.8m以上用ID19
-    static constexpr double HEIGHT_FINE_LAND = 0.5;       // 精降落高度阈值(米) - 0.5m以下切换AUTO.LAND
+    // 可配置参数 (从YAML文件加载)
+    double DATA_TIMEOUT;           // 数据超时时间(秒)
+    double ARUCO_LOST_BUFFER_TIME; // ArUco丢失缓冲时间(秒)
+    double HEIGHT_ROUGH_LAND;      // 粗降落高度阈值(米)
+    double HEIGHT_FINE_LAND;       // 精降落高度阈值(米)
+    
+    // 控制频率参数
+    double control_frequency_;
+    
+    // 速度限制参数
+    struct RoughLandParams {
+        double max_vel_high, max_vel_medium, max_vel_low;
+        double z_vel_high, z_vel_medium, z_vel_approach, z_vel_transition;
+    } rough_land_params_;
+    
+    struct FineLandParams {
+        double max_vel_upper, max_vel_middle, max_vel_lower;
+        double z_vel_upper, z_vel_middle, z_vel_lower, z_vel_final;
+    } fine_land_params_;
+    
+    // 自适应PID参数
+    struct AdaptiveFactors {
+        double very_high, high, medium, low;
+    } height_factors_, error_factors_;
+    
+    struct ModeFactors {
+        double rough_land, fine_land, default_mode;
+    } mode_factors_;
+    
+    struct AdaptiveLimits {
+        double kp_min, kp_max, ki_min, ki_max, kd_min, kd_max;
+    } adaptive_limits_;
+    
+    // 偏航控制参数
+    double max_yaw_rate_;
+    
+    // 安全和调试参数
+    double offboard_check_interval_, status_print_interval_, param_print_interval_, height_print_interval_;
+    bool enable_coordinate_transform_test_, enable_aruco_detection_debug_, enable_pid_debug_, enable_mode_debug_;
 
     // ROS相关成员
     ros::NodeHandle nh_;
-    ros::Subscriber pose_sub, aruco_dection_sub, aruco_trigger_sub, mavros_state_sub, rel_alt_sub;
+    ros::Subscriber pose_sub, aruco_dection_sub, aruco_trigger_sub, mavros_state_sub, rel_alt_sub, lidar_sub, hangar_state_sub_;
     ros::Publisher mavros_setpoint_pub;  // 替换原来的uav_command_pub
     ros::ServiceClient set_mode_client;  // 添加模式设置客户端
     ros::Timer control_timer_;
@@ -836,8 +1085,15 @@ private:
     ros::Time last_update_time_;
     
     // 状态变量
-    bool is_aruco_detected_, is_trigger_, last_had_19, last_had_43, 
-         switch_flag, current_has_19, current_has_43, system_flag;
+    bool is_aruco_detected_ = false,
+         is_trigger_ = false,
+         is_trigger_manual_ = false,
+         last_had_19 = false,
+         last_had_43 = false,
+         switch_flag = false,
+         current_has_19 = false,
+         current_has_43 = false,
+         system_flag = true;
     LandingMode current_mode_;
     int first_19_idx, first_43_idx;
     
@@ -855,11 +1111,29 @@ private:
     double rel_alt_;
     bool rel_alt_available_;
     
+    // 激光测距数据
+    double lidar_height_;
+    bool lidar_available_;
+    ros::Time last_lidar_time_;
+    
+    // 激光测距配置参数
+    int height_source_priority_;       // 高度数据源优先级
+    bool lidar_enable_;                // 是否启用激光测距
+    std::string lidar_topic_;          // 激光测距话题名称
+    double lidar_timeout_;             // 激光测距数据超时时间
+    double lidar_noise_threshold_;     // 噪声过滤阈值
+    double lidar_fusion_weight_;       // 融合权重
+    bool enable_lidar_debug_;          // 激光测距调试开关
+    
     // 偏航角速率计算相关变量
     double last_target_yaw_;
     ros::Time last_yaw_time_;
     bool yaw_initialized_;
+
+    // Hangar trigger gate
+    bool enable_hangar_trigger_ = true;
+    int hangar_ready_value_ = 1; // default: 1 means ready
+    int last_hangar_state_ = 0;
 };
 
 #endif // ARUCO_CONTROLLER_H
-

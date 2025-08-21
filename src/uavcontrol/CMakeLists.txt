@@ -108,6 +108,12 @@ target_link_libraries(aruco_land ${catkin_LIBRARIES})
 add_executable(aruco_trigger_node utils/aruco_trigger_node.cpp)
 target_link_libraries(aruco_trigger_node ${catkin_LIBRARIES})
 
+
+# Arm / Disarm console node
+add_executable(arm_disarm_console utils/arm_disarm_console.cpp)
+add_dependencies(arm_disarm_console ${catkin_EXPORTED_TARGETS})
+target_link_libraries(arm_disarm_console ${catkin_LIBRARIES})
+
 add_executable(mission_waypoint_node utils/mission_waypoint.cpp)
 target_link_libraries(mission_waypoint_node ${catkin_LIBRARIES})
 
@@ -144,7 +150,48 @@ ${PAHO_MQTT_C_LIBRARIES}
 modbus #
 )
 
+# Gimbal control node
+add_executable(gimbal_control_node utils/gimbal_control_node.cpp)
+add_dependencies(gimbal_control_node ${catkin_EXPORTED_TARGETS})
 
+
+target_link_libraries(gimbal_control_node
+${catkin_LIBRARIES}
+${PAHO_MQTT_CPP_LIBRARIES}
+${PAHO_MQTT_C_LIBRARIES}
+)
+
+
+# Hangar MQTT bridge (MQTT -> ROS std_msgs/UInt8)
+add_executable(hangar_mqtt_bridge utils/hangar_mqtt_bridge.cpp)
+add_dependencies(hangar_mqtt_bridge ${catkin_EXPORTED_TARGETS})
+target_link_libraries(hangar_mqtt_bridge
+  ${catkin_LIBRARIES}
+  ${PAHO_MQTT_CPP_LIBRARIES}
+  ${PAHO_MQTT_C_LIBRARIES}
+)
+
+add_library(sensor_mqtt_state utils/sensor_mqtt_state.cpp)
+add_library(sensor_mqtt_control utils/sensor_mqtt_control.cpp)
+
+add_executable(sensor_mqtt_main utils/sensor_mqtt_main.cpp)
+target_link_libraries(sensor_mqtt_main
+  ${catkin_LIBRARIES}
+  ${PAHO_MQTT_CPP_LIBRARIES}
+  ${PAHO_MQTT_C_LIBRARIES}
+  #/home/orangepi/autouav_platform/devel/lib/libsensor_mqtt_control.so
+  #/home/orangepi/autouav_platform/devel/lib/libsensor_mqtt_state.so
+  /home/amov/autouav_platform/devel/lib/libsensor_mqtt_control.so
+  /home/amov/autouav_platform/devel/lib/libsensor_mqtt_state.so
+  /usr/local/lib/libpaho-mqtt3a.so /usr/local/lib/libpaho-mqttpp3.so
+  sensor_mqtt_control  
+  sensor_mqtt_state    
+)
+
+add_dependencies(sensor_mqtt_main
+  sensor_mqtt_control
+  sensor_mqtt_state
+)
 
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}

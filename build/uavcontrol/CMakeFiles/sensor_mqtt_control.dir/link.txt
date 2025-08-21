@@ -1,0 +1,1 @@
+/usr/lib/ccache/c++ -fPIC -shared -Wl,-soname,libsensor_mqtt_control.so -o /home/amov/autouav_platform/devel/lib/libsensor_mqtt_control.so CMakeFiles/sensor_mqtt_control.dir/utils/sensor_mqtt_control.cpp.o   -L/usr/local/lib
