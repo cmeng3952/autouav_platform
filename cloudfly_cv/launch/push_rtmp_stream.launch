@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  
+    <param name="mqtt_config_path"        value="$(find cloudfly_cv)/config/mqtt_config.txt" />  
+
+    
+  <node pkg="cloudfly_cv" name="push_rtmp_stream" type="push_rtmp_stream" output="screen"></node>
+  
+  <!-- <node name="rviz" pkg="rviz" type="rviz" respawn="true" args="-d $(find target_cv)/launch/config.rviz"/> -->
+
+</launch>

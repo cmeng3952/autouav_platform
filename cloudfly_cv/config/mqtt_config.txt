@@ -1,0 +1,7 @@
+broker: tcp://47.104.183.127:1983
+client_id: test
+topic_mqtt: aicontrol/command/uav3
+mqtt_username: pxtest
+mqtt_password: test2025@px
+
+

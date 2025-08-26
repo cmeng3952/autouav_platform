@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  
+    <param name="mqtt_config_path"        value="$(find cloudfly_cv)/config/mqtt_config.txt" />  
+    <!-- <rosparam command="load"        file="$(find cloudfly_cv)/config/ArUco_sizes.yaml" />   -->
+  
+    <!-- <param name="marker_sizes_path"        value="$(find cloudfly_cv)/config/marker_sizes.txt" /> -->
+    
+  <node pkg="cloudfly_cv" name="mqtt_pub" type="mqtt_pub" output="screen"></node>
+  
+  <!-- <node name="rviz" pkg="rviz" type="rviz" respawn="true" args="-d $(find target_cv)/launch/config.rviz"/> -->
+
+</launch>

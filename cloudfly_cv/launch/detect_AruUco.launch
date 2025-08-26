@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>  
+    <param name="intrinsic_path"        value="$(find cloudfly_cv)/config/intrinsic.txt" />  <!-- intrinsic file -->
+    <!-- <rosparam command="load"        file="$(find cloudfly_cv)/config/ArUco_sizes.yaml" />   -->
+    <param name="mqtt_config_path"        value="$(find cloudfly_cv)/config/mqtt_config.txt" />  
+    <param name="marker_sizes_path"        value="$(find cloudfly_cv)/config/marker_sizes.txt" />
+
+    <!-- 
+    0:usb camera
+    1:Sky droid
+    2:Z-2mini
+     -->
+    <param name="camera_type" type="string" value="rtsp://192.168.144.108:554/stream=0" />
+
+
+    <!-- <param name="input_photo_path"      value="/home/amov/stereo_image/left/left_0.jpg" />  photo to get RGB info -->
+
+    <!-- <param name="threshold_lidar"       type="int" value="200" />  the limit of messages to transfer to the pcd file, 80 means maximum 80 messages of lidar -->
+    
+  <node pkg="cloudfly_cv" name="detect_ArUco" type="detect_ArUco" output="screen"></node>
+  
+  <!-- <node name="rviz" pkg="rviz" type="rviz" respawn="true" args="-d $(find target_cv)/launch/config.rviz"/> -->
+
+</launch>
