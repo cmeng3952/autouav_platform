@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <!-- 可选：启动触发节点（默认不启动，可以手动运行） -->
+     
+    <node name="aruco_trigger_node" 
+          pkg="uavcontrol" 
+          type="aruco_trigger_node" 
+          output="screen"
+          args="interactive"
+          respawn="false"/>
+    
+    
+</launch> 

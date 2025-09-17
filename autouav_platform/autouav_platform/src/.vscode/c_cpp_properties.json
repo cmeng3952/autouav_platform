@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/orangepi/spirecv-ros/devel/include/**",
+        "/home/orangepi/Visual_SDK/devel/include/**",
+        "/home/orangepi/UAV_SDK/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/orangepi/UAV_SDK/src/communication/include/**",
+        "/home/orangepi/spirecv-ros/cv_bridge_2004/include/**",
+        "/home/orangepi/UAV_SDK/src/uavcontrol/include/**",
+        "/home/orangepi/UAV_SDK/src/uavcontrol_msgs/include/**",
+        "/home/orangepi/Visual_SDK/src/visual_control/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-arm64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

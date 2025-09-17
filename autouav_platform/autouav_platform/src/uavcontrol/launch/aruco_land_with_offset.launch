@@ -1,0 +1,29 @@
+<launch>
+    <!-- ArUco Landing Node with Camera Offset Compensation -->
+    <node pkg="uavcontrol" type="aruco_land" name="mission_aruco_land_node" output="screen">
+        <!-- Load all parameters from YAML file -->
+        <rosparam file="$(find uavcontrol)/config/aruco_land_params.yaml" command="load" />
+        
+        <!-- Override camera offset parameters for your specific setup -->
+        <!-- Example: Camera mounted 30cm forward of vehicle center -->
+        <!--
+        <param name="camera_offset/x" type="double" value="0.2"/>
+        <param name="camera_offset/y" type="double" value="0.0"/>
+        <param name="camera_offset/z" type="double" value="0.0"/>
+        -->
+        
+        <!-- You can also override other parameters as needed -->
+        <!-- Example: Adjust PID gains for your specific vehicle -->
+        <!--
+        <param name="p_gain_x" type="double" value="0.6"/>
+        <param name="p_gain_y" type="double" value="0.6"/>
+        -->
+    </node>
+    
+    <!-- Optional: ArUco detection node (if not already running) -->
+    <!--
+    <include file="$(find cloudfly_cv)/launch/detect_AruUco.launch">
+        <arg name="camera_topic" value="/uav3/camera/image_raw"/>
+    </include>
+    -->
+</launch>

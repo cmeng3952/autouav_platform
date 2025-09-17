@@ -1,0 +1,14 @@
+<launch>
+  <node pkg="uavcontrol" type="gimbal_control_node" name="gimbal_control_node" output="screen">
+    <param name="target_ip" value="192.168.144.108"/>
+    <param name="target_port" value="2337"/>
+    <param name="local_ip" value="192.168.144.2"/>
+    <param name="local_port" value="2338"/>
+
+    <param name="mqtt_broker" value="tcp://47.104.183.127:1983"/>
+    <param name="mqtt_user" value="pxtest"/>
+    <param name="mqtt_password" value="test2025@px"/>
+    <param name="mqtt_sub_topic" value="uavcontrol/gimbal/command/uav2"/>
+    <param name="mqtt_pub_topic" value="uavcontrol/gimbal/state/uav2"/>
+  </node>
+</launch> 

@@ -1,0 +1,33 @@
+<launch>
+  <!-- UAV传感器控制与状态发布整合节点 -->
+  <node 
+    name="sensor_mqtt_main" 
+    pkg="uavcontrol" 
+    type="sensor_mqtt_main" 
+    output="screen"
+
+  >
+  
+    <!-- MQTT连接配置 -->
+    <param name="broker" value="tcp://47.104.183.127:1983"/>
+    <param name="username" value="pxtest"/>
+    <param name="password" value="test2025@px"/>
+    
+    <!-- 主题配置 -->
+    <param name="pub_topic" value="uavsensor/state/uav2"/>
+    <param name="sub_topic" value="uavcontrol/command/uav2"/>
+    <param name="state_sync_topic" value="uavsensor/state_sync/uav2"/>
+    
+    <!-- 媒体流配置 -->
+    <param name="stream_url" value="rtmp://47.104.183.127/audio/uav2"/>
+    <param name="volume_gain" value="50dB"/>
+    
+    <!-- 硬件控制配置 -->
+    <param name="parachute_pwm" value="21"/>
+    <param name="police_gpio" value="112"/>
+    
+    <!-- 状态发布频率配置 -->
+    <param name="publish_freq" value="1.0"/>
+  </node>
+</launch>
+

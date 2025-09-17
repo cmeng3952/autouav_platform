@@ -1,0 +1,14 @@
+<launch>
+  <node pkg="uavcontrol" type="arm_disarm_mqt.py" name="arm_disarm_mqtt_bridge" output="screen">
+    <param name="uav_name" value="uav2" />
+    <param name="mqtt_broker" value="tcp://47.104.183.127:1983" />
+    <param name="mqtt_user" value="pxtest" />
+    <param name="mqtt_password" value="test2025@px" />
+    <param name="mqtt_sub_topic" value="uavcontrol/command/uav2" />
+    <param name="auto_disarm_after_sec" value="30" />
+    <!-- 可选：TLS 证书路径，用于 ssl:// 连接时启用验证 -->
+    <!-- <param name="mqtt_ca_cert" value="$(find uavcontrol)/config/emqxsl-ca.crt" /> -->
+  </node>
+</launch>
+
+

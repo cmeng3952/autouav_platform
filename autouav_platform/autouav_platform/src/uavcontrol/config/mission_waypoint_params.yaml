@@ -1,0 +1,41 @@
+# Mission Waypoint Height Fusion Parameters
+
+# 高度融合权重配置
+height_fusion:
+  # 数据源权重（权重越高，影响越大）
+  aruco_weight: 0.7      # ArUco深度数据权重（视觉检测同步，精度高）
+  lidar_weight: 0.5      # 激光雷达数据权重（可靠地面距离）
+  gps_weight: 0.3        # GPS高度差权重（备用参考）
+  
+  # 数据超时设置
+  lidar_timeout: 2.0     # 激光雷达数据超时时间 (秒)
+  aruco_timeout: 1.0     # ArUco数据超时时间 (秒)
+  
+  # 调试选项
+  enable_fusion_debug: true  # 启用融合调试输出
+
+# 返航高度判断参数
+rtl_height_check:
+  min_height: 5.0        # 最小返航高度 (米)
+  max_height: 8.0        # 最大返航高度 (米)
+  horizontal_threshold: 1.5  # 水平距离阈值 (米)
+
+# 高度数据有效性检查
+height_validation:
+  aruco_min_depth: 0.1   # ArUco最小有效深度 (米)
+  aruco_max_depth: 50.0  # ArUco最大有效深度 (米)
+  lidar_min_range: 0.1   # 激光雷达最小有效距离 (米)
+  lidar_max_range: 50.0  # 激光雷达最大有效距离 (米)
+  gps_max_height: 100.0  # GPS最大有效高度差 (米)
+
+# 调试输出控制
+debug:
+  fusion_print_interval: 5.0     # 融合调试信息打印间隔 (秒)
+  height_comparison_interval: 5.0  # 高度比较信息打印间隔 (秒)
+  enable_detailed_logging: true   # 启用详细日志记录
+
+# 机头朝向检查参数 (新增)
+heading_check:
+  yaw_tolerance_deg: 6.0         # 偏航角容忍度 (度)，机头与目标方向的最大允许偏差
+  min_stability_count: 2        # 最小稳定计数，需要连续满足多少次才认为稳定
+  enable_heading_check: true     # 是否启用机头朝向检查（false则跳过检查直接触发）

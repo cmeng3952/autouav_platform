@@ -1,0 +1,320 @@
+# ArUco Landing Parameters Configuration
+# This file contains all parameters for the ArUco marker-based landing system
+
+# Camera offset parameters (in body frame, units: meters)
+# These parameters compensate for camera installation position relative to vehicle center
+camera_offset:
+  # X offset: positive value means camera is forward of vehicle center (towards nose)
+  # For camera mounted under the nose, this should be positive
+  x: 0.10  # Camera is ~15cm forward of vehicle center
+  
+  # Y offset: positive value means camera is to the right of vehicle center
+  # Usually 0 if camera is centered laterally
+  y: 0.05
+  
+  # Z offset: positive value means camera is below vehicle center
+  # This is typically small as it represents the vertical offset
+  z: 0.05  # Example: camera is 5cm below vehicle center
+  
+  # Camera field of view angles (degrees)
+  # These are used for accurate offset compensation calculations
+  fov_x: 70.0  # Horizontal field of view
+  fov_y: 43.0  # Vertical field of view
+
+# PID control gains
+p_gain_x: 0.5
+i_gain_x: 0.01
+d_gain_x: 0.1
+p_gain_y: 0.5
+i_gain_y: 0.01
+d_gain_y: 0.1
+p_gain_z: 0.3
+
+# Control system parameters
+control_frequency: 20.0  # Hz
+data_timeout: 0.5        # seconds
+aruco_lost_buffer_time: 2.0  # seconds - time to continue landing after losing ArUco
+
+# Height thresholds (meters) - 调整为更实际的高度范围
+height_rough_land: 15.0  # Switch from rough to fine landing - 15米以上为粗降落
+height_fine_land: 3.0    # Switch to PX4 AUTO.LAND mode - 3米以下考虑AUTO.LAND
+
+# Rough landing velocity parameters (更新为适应新高度范围)
+rough_land:
+  max_vel_high: 0.5      # Max horizontal velocity when height > 10.0m
+  max_vel_medium: 0.4    # Max horizontal velocity when 5.0m < height <= 10.0m
+  max_vel_low: 0.3       # Max horizontal velocity when height <= 5.0m
+  z_vel_high: -0.8       # Vertical velocity when height > 20.0m
+  z_vel_medium: -0.6     # Vertical velocity when 10.0m < height <= 20.0m
+  z_vel_approach: -0.4   # Vertical velocity when 5.0m < height <= 10.0m
+  z_vel_transition: -0.2 # Vertical velocity when approaching fine landing threshold
+
+# Fine landing velocity parameters (更新为适应新高度范围)
+fine_land:
+  max_vel_upper: 0.35    # Max horizontal velocity when height > 2.0m
+  max_vel_middle: 0.25   # Max horizontal velocity when 1.5m < height <= 2.0m
+  max_vel_lower: 0.2     # Max horizontal velocity when height <= 1.5m
+  z_vel_upper: -0.4      # Vertical velocity when height > 2.5m
+  z_vel_middle: -0.3     # Vertical velocity when 2.0m < height <= 2.5m
+  z_vel_lower: -0.2      # Vertical velocity when 1.0m < height <= 2.0m
+  z_vel_final: -0.15     # Vertical velocity when approaching AUTO.LAND threshold
+
+# Adaptive PID parameters
+adaptive_pid:
+  # Height-based gain factors (更新为适应新高度范围)
+  height_factors:
+    very_high: 1.3   # Height > 10.0m
+    high: 1.1        # 5.0m < height <= 10.0m
+    medium: 0.9      # 3.0m < height <= 5.0m
+    low: 0.7         # Height <= 3.0m
+  
+  # Landing mode gain factors
+  mode_factors:
+    rough_land: 1.2
+    fine_land: 0.9
+    default: 1.0
+  
+  # Gain limits
+  limits:
+    kp_min: 0.3
+    kp_max: 2.5
+    ki_min: 0.5
+    ki_max: 1.5
+    kd_min: 0.7
+    kd_max: 1.8
+
+# Yaw control parameters
+yaw_control:
+  max_yaw_rate: 0.5     # rad/s - Maximum yaw rate for safety
+  yaw_p_gain: 1.0       # Proportional gain for yaw PID controller
+  yaw_i_gain: 0.1       # Integral gain for yaw PID controller  
+  yaw_d_gain: 0.2       # Derivative gain for yaw PID controller
+  target_east_yaw: 0.0   # Target east direction in radians (0 = East)
+  enable_yaw_control: true  # Enable yaw control system
+  
+  # 安全参数
+  max_rate_change: 0.2      # 最大角速率变化率 (rad/s^2)
+  abnormal_rate_threshold: 2.0  # 异常角速率检测阈值倍数
+  yaw_tolerance: 0.087      # 偏航角容差 (5度转弧度)
+  
+  # 调试参数
+  enable_yaw_debug: true    # 启用偏航控制调试输出
+  debug_print_interval: 3.0 # 调试信息打印间隔 (秒)
+
+# AUTO.LAND触发配置
+autoland_trigger:
+  # 多种触发方式开关
+  enable_height_trigger: true     # 启用高度触发AUTO.LAND
+  enable_time_trigger: true      # 启用时间触发AUTO.LAND  
+  enable_accuracy_trigger: true  # 启用精度触发AUTO.LAND
+  
+  # 时间触发参数
+  auto_land_time_threshold: 15.0  # 精降落持续时间阈值 (秒)
+  
+  # 精度触发参数
+  position_accuracy_threshold: 0.10  # 位置精度阈值 (归一化坐标)
+  
+  # 手动触发
+  # 使用话题: rostopic pub /manual_autoland_trigger std_msgs/Bool "data: true"
+
+# Height data source configuration
+# Priority: 0=GPS only, 1=Lidar only, 2=Lidar+GPS fusion, 3=Lidar priority with GPS backup
+# 4=ArUco depth priority, 5=Multi-source fusion (ArUco+Lidar+GPS)
+height_source_priority: 3
+
+# Lidar configuration
+lidar:
+  enable: true
+  topic_name: "/uav2/mavros/distance_sensor/hrlv_ez4_pub"
+  timeout: 1.0           # seconds
+  noise_threshold: 0.0   # meters
+  fusion_weight: 1.0     # Weight for lidar in fusion mode (0-1)
+
+# ArUco depth data configuration
+aruco_depth:
+  enable: true                    # 启用ArUco深度数据作为高度源
+  min_valid_depth: 0.1           # 最小有效深度 (米)
+  max_valid_depth: 50.0          # 最大有效深度 (米)
+  
+  # 多源融合权重配置
+  depth_weight: 0.8              # ArUco深度数据权重
+  lidar_weight: 0.6              # 激光测距权重（多源融合时）
+  gps_weight: 0.4                # GPS权重（多源融合时）
+  
+  # 调试选项
+  enable_depth_debug: true       # 启用ArUco深度调试输出
+
+# 风扰动补偿配置
+wind_compensation:
+  enable: true                   # 启用风扰动补偿系统
+  
+  # 滤波器时间常数
+  position_filter_time_constant: 0.2   # 位置滤波器时间常数 (秒)
+  velocity_filter_time_constant: 0.1   # 速度滤波器时间常数 (秒)
+  wind_estimation_filter_tc: 1.0       # 风估计滤波器时间常数 (秒)
+  
+  # 补偿参数
+  compensation_gain: 0.3         # 风补偿增益
+  max_compensation: 0.2          # 最大风补偿限制 (m/s)
+  
+  # 自适应增益参数
+  adaptive_gain_large: 1.2       # 大误差时增益
+  adaptive_gain_medium: 1.0      # 中误差时增益
+  adaptive_gain_small: 0.8       # 小误差时增益
+  large_error_threshold: 0.3     # 大误差阈值
+  medium_error_threshold: 0.1    # 中误差阈值
+  
+  # 位置预测参数
+  position_prediction_time: 0.2  # 位置预测时间 (秒)
+  
+  # 调试选项
+  enable_debug: true             # 启用风扰动调试输出
+  debug_interval: 2.0            # 调试信息输出间隔 (秒)
+
+# Safety parameters
+safety:
+  offboard_check_interval: 1.0    # seconds
+  status_print_interval: 2.0      # seconds
+  param_print_interval: 3.0       # seconds
+  height_print_interval: 5.0      # seconds
+
+# Debug flags
+debug:
+  enable_coordinate_transform_test: true
+  enable_aruco_detection_debug: true
+  enable_pid_debug: true
+  enable_mode_debug: true
+  enable_lidar_debug: true
+
+# Corner marker landing configuration
+corner_marker_landing:
+  # Enable corner marker (ID 1-4) detection and landing
+  enable: true
+  
+  # Platform dimensions (meters) - for validation
+  platform_length: 2.0    # Distance between front and back markers
+  platform_width: 1.5     # Distance between left and right markers
+  
+  # Corner marker IDs
+  front_left_id: 1         # ID1 - front left corner
+  back_left_id: 2          # ID2 - back left corner  
+  back_right_id: 3         # ID3 - back right corner
+  front_right_id: 4        # ID4 - front right corner
+  
+  # Orientation control
+  target_heading: 0.0      # Target platform heading in degrees (0 = East)
+  heading_tolerance: 5.0   # Acceptable heading error in degrees
+  
+# Landing strategy configuration
+landing_strategy:
+  # Strategy selection: 
+  # 0 = CENTER_MARKERS_ONLY (ID19, ID43)
+  # 1 = CORNER_MARKERS_ONLY (ID1-4) 
+  # 2 = HYBRID_STRATEGY (Corner + Center)
+  # 3 = AUTO_ADAPTIVE (Automatic selection based on available markers)
+  default_strategy: 2
+  
+  # Hybrid mode parameters
+  hybrid_mode:
+    # Height threshold below which center markers get higher weight
+    center_priority_height: 1.0    # meters
+    # Maximum weight for center markers in hybrid mode
+    max_center_weight: 0.7         # 0.0 to 1.0
+    # Weight transition rate
+    weight_transition_rate: 1.5    # higher = faster transition
+
+# Corner-guided landing velocity parameters
+corner_guided_land:
+  max_vel_high: 0.3        # Max horizontal velocity when height > 1.0m
+  max_vel_low: 0.2         # Max horizontal velocity when height <= 1.0m
+  z_vel_high: -0.4         # Vertical velocity when height > 2.0m
+  z_vel_medium: -0.3       # Vertical velocity when 1.0m < height <= 2.0m
+  z_vel_low: -0.2          # Vertical velocity when 0.5m < height <= 1.0m
+  z_vel_final: -0.1        # Vertical velocity when height <= 0.5m
+
+# Hybrid landing velocity parameters  
+hybrid_land:
+  max_vel_high: 0.25       # Max horizontal velocity when height > 1.0m
+  max_vel_low: 0.2         # Max horizontal velocity when height <= 1.0m
+  z_vel_high: -0.35        # Vertical velocity when height > 1.5m
+  z_vel_medium: -0.25      # Vertical velocity when 0.8m < height <= 1.5m
+  z_vel_low: -0.15         # Vertical velocity when 0.5m < height <= 0.8m
+  z_vel_final: -0.1        # Vertical velocity when height <= 0.5m
+
+# Camera installation offset compensation
+camera_installation:
+  # Physical offset from vehicle center to camera (meters)
+  offset_forward: 0.15     # Camera is 15cm forward of vehicle center
+  offset_right: 0.0        # Camera is centered laterally
+  offset_down: 0.0        # Camera is 5cm below vehicle center
+  
+  # Camera field of view (degrees)
+  horizontal_fov: 70.0     # Horizontal field of view
+  vertical_fov: 43.0       # Vertical field of view
+  
+  # Enable automatic offset compensation
+  enable_compensation: true
+
+# Platform boundary limits (safety constraints)
+boundary_limits:
+  # Enable boundary constraint system
+  enable: true
+  
+  # Use polygon boundaries (true) or rectangular boundaries (false)
+  # Polygon boundaries follow the exact shape formed by corner markers
+  use_polygon_bounds: true
+  
+  # Safety margin from corner markers (normalized coordinates)
+  # For polygon: shrinks the polygon inward by this factor (0.0-1.0)
+  # For rectangle: reduces area by this margin from each edge
+  safety_margin: 0.05      # 5% margin from each edge
+  
+  # Enable boundary constraint debugging
+  enable_debug: true
+  
+  # Boundary behavior options
+  constraint_mode: "soft"  # "soft" = constrain to bounds, "hard" = emergency stop
+  
+  # Emergency actions if out of bounds (when constraint_mode = "hard")
+  emergency_action: "hover"  # "hover", "land", "rtl"
+  
+  # Boundary constraint control parameters
+  constraint_gain: 2.0         # Constraint strength multiplier
+  max_control_output: 0.3      # Maximum control output for boundary constraints
+  
+  # Advanced polygon boundary settings
+  polygon_settings:
+    # Minimum valid polygon area (normalized coordinates)
+    min_polygon_area: 0.01
+    
+    # Maximum allowed corner deviation (for validation)
+    max_corner_deviation: 0.2
+    
+    # Corner ordering validation
+    validate_corner_order: true
+
+# Partial corner marker guidance system (for 1-3 corner markers)
+partial_corner_guidance:
+  # Enable partial corner marker guidance
+  enable: true
+  
+  # Guidance control parameters
+  guidance_gain: 1.5           # Guidance strength multiplier
+  conservatism_factor: 0.8     # Conservative factor for PID gains
+  
+  # Velocity limits for partial guidance mode
+  max_vel_high: 0.25          # Maximum velocity at high altitude
+  max_vel_low: 0.15           # Maximum velocity at low altitude
+  
+  # Descent velocities for partial guidance mode (very conservative)
+  z_vel_high: -0.3            # High altitude descent (>3m)
+  z_vel_medium: -0.2          # Medium altitude descent (1.5-3m)
+  z_vel_low: -0.1             # Low altitude descent (0.8-1.5m)
+  
+  # Advanced settings
+  min_markers_for_yaw: 2      # Minimum markers needed for yaw estimation
+  position_confidence_threshold: 0.7  # Minimum confidence for position estimates
+
+# Hangar integration (optional)
+enable_hangar_trigger: false
+hangar_ready_value: 1

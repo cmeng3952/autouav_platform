@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- 无人机ID参数 -->
+    <arg name="uav_id" default="2" />
+    
+    <!-- EKF2操作类型: reset, stop, start -->
+    <arg name="command" default="reset" />
+    
+    <!-- 是否显示使用说明 -->
+    <arg name="show_usage" default="false" />
+    
+    <!-- EKF2重置节点 -->
+    <node name="ekf2_reset_node" pkg="uavcontrol" type="ekf2_reset_node" output="screen">
+        <param name="uav_id" value="$(arg uav_id)" />
+        
+        <!-- 如果指定了命令，作为参数传递 -->
+        <param name="command" value="$(arg command)" if="$(eval command != 'reset')" />
+    </node>
+    
+    <!-- 使用说明 -->
+    <node name="usage_info" pkg="rostopic" type="rostopic" 
+          args="pub -1 /ekf2_reset_usage std_msgs/String 'data: EKF2 Reset Node Started. Available service: /uav$(arg uav_id)/ekf2_reset'"
+          if="$(arg show_usage)" />
+    
+</launch>

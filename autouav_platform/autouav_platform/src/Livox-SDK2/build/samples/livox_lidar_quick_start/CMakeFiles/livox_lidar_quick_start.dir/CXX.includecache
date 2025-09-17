@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/livox_lidar_api.h
+stdbool.h
+-
+stdint.h
+-
+livox_lidar_def.h
+../include/livox_lidar_def.h
+
+../include/livox_lidar_def.h
+stdint.h
+-
+
+/home/orangepi/autouav_platform/src/Livox-SDK2/samples/livox_lidar_quick_start/main.cpp
+livox_lidar_def.h
+/home/orangepi/autouav_platform/src/Livox-SDK2/samples/livox_lidar_quick_start/livox_lidar_def.h
+livox_lidar_api.h
+/home/orangepi/autouav_platform/src/Livox-SDK2/samples/livox_lidar_quick_start/livox_lidar_api.h
+winsock2.h
+-
+unistd.h
+-
+arpa/inet.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+thread
+-
+chrono
+-
+iostream
+-
+
